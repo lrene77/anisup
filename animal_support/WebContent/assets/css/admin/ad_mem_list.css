@@ -1,0 +1,35 @@
+.table th:first-child{
+		width: 5%;
+}
+
+.table th:nth-child(2){
+		width: 10%;
+}
+
+.table th:nth-child(3){
+		width: 20%;
+}
+
+.table th:nth-child(4){
+		width: 10%;
+}
+
+.table th:nth-child(5){
+		width: 20%;
+}
+
+.table th:nth-child(6){
+		width: 10%;
+}
+
+.table th:nth-child(7){
+		width: 10%;
+}
+
+.table th:last-child{
+		width: 15%;
+}
+
+.mem_kind{
+	margin-top: 20px;
+}

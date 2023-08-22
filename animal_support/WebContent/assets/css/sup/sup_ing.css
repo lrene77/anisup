@@ -1,0 +1,160 @@
+div.thumbnail > p#sidebox {
+	padding: 10px 20px;
+}
+
+#li_2 {
+	color: orange;
+}
+#li_3 {
+	color: #333;
+}
+#li_4 {
+	color: rgb(158, 158, 158);
+}
+#btn {
+	/*position: absolute;*/
+	width: 100%;
+	/*padding: 5px 30px;*/
+}
+
+.progress {
+	margin-bottom: 0px;
+	border-radius: 10px;
+}
+
+.thumbnail {
+	padding: 0px;
+	border: 2px solid #ddd;
+}
+
+div#box {
+	padding: 15px;
+	/*margin: 15px;*/
+}
+
+a#btn {
+	padding: 15px;
+	font-size: 18px;
+}
+
+
+/*캐러셀 시작*/
+.carousel {
+	height: 500px;
+	margin-bottom: 60px;
+}
+.carousel-inner > .item > img{
+	min-width: 100%;
+	height: 500px;	
+}
+.carousel-inner .carousel-caption {
+	padding-left: 30px;
+	padding-right: 30px;
+	background-color: rgba(0,0,0,0.5) !important;
+}
+/** 캐러셀의 반응형 기능 */
+@media (min-width: 768px) {
+		.carousel-caption p {
+		margin-bottom: 20px;
+		font-size: 21px;
+		line-height: 1.4;
+	}	
+}
+
+@media (max-width: 991px) {
+	#progressbarMotion > div {
+		display: none;
+	}
+}
+/*캐러셀 끝*/
+
+h1 {
+	margin-top: 2px;
+}
+
+div.row > .col-md-9{
+	padding: 10px 60px 10px 94px;
+}
+
+#sup > p {
+	font-size: 17px;
+}
+
+#sup > h3 {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+/* 후원 내역 */
+.well-lg {
+	margin: 0;
+} 
+#btn_write {
+	/*padding: 15px 60px;*/
+	font-size: 15px;
+	margin-top: 10px;
+	width: 120px;
+	height: 50px;
+}
+
+
+/*댓글 입력*/
+ul.row {
+	display: inline;
+	list-style: none;	
+}
+ul.row > li > button{
+	margin: 0;
+	width: 100%;
+	height: 50px;
+}
+ul.row > li > textarea{
+	margin: 0;
+	width: 100%;
+	height: 50px;
+    resize: none;
+}
+.col-md-10, .col-md-2 {
+	padding: 0;
+}
+
+/*댓글 리스트*/
+ul.media-list {
+	padding: 0 15px;
+}
+
+i {
+	color: #999;
+	margin: 0 2px;
+}
+
+/* 탭 */
+#tab1 > a, #tab2 > a {
+	color: black;
+	font-size: 20px;
+	font-weight: bold;
+}
+/*#tab1 > a:focus, #tab2 > a:focus {
+	background-color: #eee;
+}*/
+
+#tab1 > a:click{
+	background-color: #eee;
+}
+
+span#head_title {
+	font-size: 25px;
+	font-weight: bold;
+	text-shadow: 4px 4px 4px #ccc;
+}
+.well {
+	text-align: center;
+}
+
+/** 기부 박스 반응형 기능 시작 */
+/*@media (max-width: 1182px) {
+		div#give_box {
+		display: static;
+	}
+}*/
+/* 기부 박스 반응형 기능 끝*/

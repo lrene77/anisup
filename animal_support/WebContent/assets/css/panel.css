@@ -1,0 +1,67 @@
+#board {
+	margin-top: 20px;
+}
+
+.table>tbody>tr>td {
+	padding: 8px;
+	line-height: 1.428571429;
+	vertical-align: top;
+	border-top: 1px solid #ddd;
+	text-align: center;
+	/*	text-overflow: ellipsis !important;
+	overflow: hidden !important;
+	white-space: nowrap !important;*/
+}
+
+.table>tbody>tr>td>a {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.panel-default>.panel-heading>.glyphicon {
+	font-weight: bold;
+	font-size: 13px;
+	color: #4C4C4C;
+}
+
+.panel-default>.panel-heading {
+	font-weight: bold;
+	color: #333;
+	background: url("../../img/bg_snb.jpg") repeat-x;
+	border-color: #ddd;
+}
+
+.panel-default>.panel-heading>a {
+	text-decoration: none;
+}
+
+.table>thead:first-child>tr:first-child>td {
+	border-top: 0;
+	font-weight: bold;
+	text-align: center;
+	width: 400px;
+}
+
+#main-num {
+	border-top: 0;
+	font-weight: bold;
+	width: 13px !important;
+	text-align: center;
+}
+
+#main-write {
+	border-top: 0;
+	font-weight: bold;
+	width: 80px !important;
+}
+
+#main-title {
+	width: 400px;
+}
+
+.panel-body>table>tbody>tr>td {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}

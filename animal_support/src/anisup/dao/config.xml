@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- MySQL 접속 정보를 지정한다. -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" 
+				    value="jdbc:mysql://localhost:3306/anisup?characterEncoding=UTF8" />
+				<property name="username" value="root" />
+				<property name="password" value="root" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="anisup/mapper/MemberMapper.xml" />
+		<mapper resource="anisup/mapper/SupMapper.xml" />
+		<mapper resource="anisup/mapper/AniMapper.xml" />
+		<mapper resource="anisup/mapper/GiveMapper.xml" />
+		<mapper resource="anisup/mapper/ReqMapper.xml" />
+		<mapper resource="anisup/mapper/ListboardMapper.xml" />
+		<mapper resource="anisup/mapper/ListboardJoinMapper.xml" />
+		<mapper resource="anisup/mapper/FileMapper.xml" />
+		<mapper resource="anisup/mapper/CommentMapper.xml" />
+		<mapper resource="anisup/mapper/SupMemberMapper.xml" />
+		
+
+		<mapper resource="anisup/mapper/ReqJoinMapper.xml" />
+		<mapper resource="anisup/mapper/AniJoinMapper.xml" />
+		<mapper resource="anisup/mapper/SupJoinMapper.xml" />	
+		
+		<!--  mapper 경로 설정 부분<mapper resource="anisup/mapper/테이블명Mapper.xml" /> -->
+	</mappers>
+</configuration>

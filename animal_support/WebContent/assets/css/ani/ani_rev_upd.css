@@ -1,0 +1,59 @@
+span.btn{
+	font-size:13px;
+	padding:1px;
+}
+
+#ok{
+	text-decoration: none;
+	color:#000000;
+}
+
+hr{
+	border: 1.5px solid rgb(190, 190, 190);
+}
+
+table {
+	margin: auto;
+  	max-width: 80%;
+  	background-color: transparent;
+  	border-top: 1px solid rgb(190, 190, 190);
+}
+td{
+	border: 1px solid rgb(190, 190, 190);
+}
+td:nth-child(2){
+	width: 15%;
+	text-align: center;
+}
+td:nth-child(3){
+	width: 15%;
+	text-align: center;
+}
+td#noti_category{
+	text-align: center;
+}
+#noti_com{
+	padding: 0;
+	border: 0;
+}
+#com_content{
+	width: 100%;
+	height: 50px;
+}
+#com_ok{
+	width: 100%;
+	height: 50px;
+}
+
+.comment, #m_list{
+	width: 80%;
+	margin: auto;
+}
+
+.m_list2{
+	width: 15%;
+}
+
+#m_btn_list{
+	width: 100%;
+}

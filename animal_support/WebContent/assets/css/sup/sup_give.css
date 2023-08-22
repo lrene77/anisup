@@ -1,0 +1,67 @@
+hr {
+	border: 1.5px solid rgb(190, 190, 190);
+}
+
+
+/* 취소 확인 버트 시작 */
+#cbtn, #obtn{
+	width: 100px;
+	height: 35px;
+    /*line-height: 20px;*/
+    margin-bottom: 20px;
+}
+
+#cbtn{
+    background-color: #740000;
+    border: 0;
+}
+
+#cbtn:hover{
+    background-color: #900000;}
+
+#btn-sec{
+	width: 80%;
+	margin: auto;
+	text-align: right;
+}
+
+#obtn {
+	margin-right: 190px;
+}
+/* 취소 확인 버트 끝 */
+
+@media(max-width: 768px){
+    #space{
+        display: none;
+    }
+    
+    #btn-sec{
+        width: 100%;
+        margin: auto;
+        text-align: right;
+        display: inline-block;
+    }
+}
+
+
+/*modal*/
+h4,h5{
+    text-align: center;
+}
+
+#give-content{
+    padding: 20px 20px;
+}
+
+div.modal-header {
+    background-color: #000051;
+    color: #fff;
+    text-shadow: 2px 2px 2px #ccc;
+}
+
+.modal-footer {
+    margin-top: 15px;
+    padding: 7px 7px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}

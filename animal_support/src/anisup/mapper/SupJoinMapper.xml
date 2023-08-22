@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 XML의 구조대로 구현될 클래스의 이름 -->
+<mapper namespace="SupJoinMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="supjoin" type="anisup.model.SupJoin">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="mno" column="mno" />
+		<result property="supno" 	column="supno" />
+		<result property="suptitle" column="suptitle" />
+		<result property="supstart"	column="supstart" />
+		<result property="supend" column="supend" />
+		<result property="supnow" column="supnow" />
+		<result property="suping" column="suping" />
+		<result property="supprice" column="supprice" />
+		<result property="supstat" column="supstat" />
+		
+		<!-- 마이페이지 조인떄문에 추가된 컬럼 -->
+		<result property="giveprice" column="givaprice" />
+		<result property="givedate" column="givedate" />
+		<result property="giveno" column="giveno" />
+		<result property="giveid" column="giveid" />
+		
+	</resultMap>
+	<!-- 마이페이지 보호소 후원내역 조인 sup,give -->
+	<select id="myJoinSheSupList" parameterType="anisup.model.SupJoin" resultMap="supjoin">
+		select give.giveno, sup.suptitle, give.giveid, give.givedate, give.giveprice
+		from sup inner join give on sup.supno = give.supno
+		order by giveno desc;
+	</select>
+	
+	<!--  마이페이지  리스트 뿌리기-->
+	<!-- 후원글 조회 format(SUPNOW , 0), format(SUPPRICE , 0) -->
+	<select id="mySelectSupList" parameterType="anisup.model.SupJoin"
+	 resultMap="supjoin">
+		SELECT SUPNO,SUPTITLE, DATE_FORMAT(supstart, '%Y-%m-%d') AS supstart,
+		 DATE_FORMAT(supend, '%Y-%m-%d') AS supend,supnow,supprice ,suping,supstat
+		FROM sup
+		order by supno desc;
+	</select>
+	
+	<!-- 마이페이지 후원내역 조인 리스트 -->
+	<select id="myGiveJoinList" parameterType="anisup.model.SupJoin" resultMap="supjoin" >
+		<!-- 이 안에서 처리할 SQL문을 명시한다. -->
+		select sup.supno,sup.suptitle,give.givedate,give.giveprice,give.giveno
+		from sup inner join give on sup.supno = give.supno
+		order by giveno desc;
+	</select>		
+			
+</mapper>

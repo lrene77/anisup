@@ -1,0 +1,33 @@
+#mbtn, #sbtn, #dbtn,#wbtn,#cbtn, #sendbtn,#ubtn,#combtn,#detbtn{
+    width: 100px;
+    height: 35px;
+    line-height: 20px;
+}
+
+.btn-default{
+	height:32px;
+}
+
+#btn-sec{
+	width: 80%;
+	height: 100%;
+	text-align: right;
+	margin-bottom: 20px;
+}
+
+#btn-sec2{
+	width: 100%;
+	height: 100%;
+	text-align: right;
+	margin-bottom: 20px;
+}
+
+#dbtn, #mbtn, #detbtn{
+	/*line-height: 15px;*/
+	background-color: #2457BD;
+    color: white;
+}
+
+#dbtn:hover, #mbtn:hover, #detbtn:hover{
+	background-color: #00f;
+}

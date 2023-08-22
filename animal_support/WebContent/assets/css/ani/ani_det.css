@@ -1,0 +1,27 @@
+/* 본문 해상도 조정 */
+section{
+	width: 720px;
+	margin: auto;
+}
+/* 테이블 여백 제거 */
+.row{
+	margin-left: 0;
+	margin-right: 0;
+	margin-right: 0;
+	border-bottom: 1px solid #000;
+}
+/* 테이블 제목 색상변경 */			
+.table th{
+	background-color: #eee;
+}
+hr{
+	border: 1.5px solid rgb(190, 190, 190);
+}
+/* 내용 바탕색 조정 */
+.jumbotron{
+	background-color: #fff;
+}
+/* 버튼 위치 조정 */
+.btn{
+	margin-bottom: 30px;
+}

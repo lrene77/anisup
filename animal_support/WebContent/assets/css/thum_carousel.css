@@ -1,0 +1,25 @@
+/*입양 캐러셀*/
+/*#main-carousel-inner  {
+    display: block;
+    max-width: 100%;
+    height: 240px;
+    line-height: 1;
+}*/
+
+#main-img {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 270px;
+}
+#main-carousel{
+	height:240px;
+}
+
+
+carousel-inner>.item>img#main-carousel-inner{
+    display: block;
+    max-width: 100%;
+    height: 220PX;
+    line-height: 1;
+}

@@ -1,0 +1,50 @@
+.table th:first-child{
+		width: 5%;
+}
+
+.table th:nth-child(2){
+		width: 10%;
+}
+
+.table th:nth-child(3){
+		width: 20%;
+}
+
+.table th:nth-child(4){
+		width: 10%;
+}
+
+.table th:nth-child(5){
+		width: 15%;
+}
+
+.table th:nth-child(6){
+		width: 10%;
+}
+
+.table th:nth-child(7){
+		width: 10%;
+}
+
+.table th:nth-child(8){
+		width: 5%;
+}
+
+.table th:last-child{
+		width: 15%;
+}
+
+/* 입양 시작일 종료일 기간 입력 텍스트 시작 */
+.form-control[readonly] {
+    background-color: #fff;
+    cursor: default;
+}
+
+#sc1, #sbtn, #sc2 {
+	display: inline;
+}
+/* 입양 시작일 종료일 기간 입력 텍스트 끝 */
+#sc1, #sc2{
+	width: 20%;
+	height: 30px;
+}

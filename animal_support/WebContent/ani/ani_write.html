@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>ANIMAL SUPPORT</title>
+
+		<!-- 모바일 웹 페이지 설정 -->
+		<link rel="shortcut icon" href="../assets/ico/favicon_1.ico" />
+		<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-144-precomposed.png" />
+
+		<!-- Javascript -->
+		<script src="../assets/js/jquery.min.js"></script>
+		<script src="../assets/js/bootstrap.min.js"></script>
+		<script src="../assets/js/common.js"></script>
+
+		<!-- bootstrap -->
+		<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+
+		<!-- 나눔고딕 웹 폰트 적용 -->
+		<link rel="stylesheet" type="text/css" href="../assets/css/nanumfont.css" />
+
+		<!-- include summernote css/js-->
+		<link href="../plugins/summernote/summernote.css" rel="stylesheet">
+		<script src="../plugins/summernote/summernote.js"></script>
+		<!-- summer note korean language pack -->
+		<script src="../plugins/summernote/lang/summernote-ko-KR.js"></script>
+
+		<script type="text/javascript">
+		  $(function() {
+		  	$("div").removeClass("note-resizebar");
+		    $('.summernote').summernote({
+		      height: 400,          // 기본 높이값
+		      minHeight: null,      // 최소 높이값(null은 제한 없음)
+		      maxHeight: null,      // 최대 높이값(null은 제한 없음)
+		      focus: true,          // 페이지가 열릴때 포커스를 지정함
+		      lang: 'ko-KR'         // 한국어 지정(기본값은 en-US)
+		    });
+		  });
+		</script>
+		
+		<script type="text/javascript">
+		$(function(){
+			/* 입력형식 검출 */
+			$("#obtn").click(function(){
+
+				if(!$("input[name='title']").val()){
+					alert("제목을 입력해주세요.");
+					$("input[name='title']").focus();
+					return false;
+				}
+				if(!$("input[name='ani_name']").val()){
+					alert("동물 이름을 입력해주세요.");
+					$("input[name='ani_name']").focus();
+					return false;
+				}
+				if(!$("input[name='ani_gender']").val()){
+					alert("동물 성별을 입력해주세요.");
+					$("input[name='ani_gender']").focus();
+					return false;
+				}
+				if(!$("input[name='ani_age']").val()){
+					alert("동물 나이를 입력해주세요.");
+					$("input[name='ani_age']").focus();
+					return false;
+				}
+				if($(".note-editable p").val() == null){
+					alert("소개를 입력해주세요.");
+					$(".note-editable p").focus();
+					return false;
+				}
+
+				/* 입력값 저장 */
+				var title = $("input[name='title']").val();
+				var ani_name = $("input[name='ani_name']").val();
+				var ani_gender = $("input[name='ani_gender']").val();
+				var ani_age = $("input[name='ani_age']").val();
+				/* var text = $("input[name='text']").val(); */
+				var text = $(".note-editable p").val();
+
+				/* 입력값 조립 */
+				var result = "<ul>";
+				result += "<li>제목 : " + title + "</li>";
+				result += "<li>동물 이름 : " + ani_name + "</li>";
+				result += "<li>동물 성별 : " + ani_gender + "</li>";
+				result += "<li>동물 나이 : " + ani_age + "</li>";
+				result += "<li>소개 : " + text + "</li>";
+				result += "</ul>";
+
+				/* 입력값 출력 */
+				/* $("body").html(result); */
+
+				/* return false; */
+				alert("신청이 완료되었습니다.");
+				location.href="ani_list.html";
+			});
+		});
+		</script>
+
+		<!-- 반응형 웹을 지원하지 않을 경우 -->
+		<!-- <link rel="stylesheet" href="../assets/css/non-responsive.css" /> -->
+
+		<!-- IE8 이하 버전 지원 -->
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="../assets/js/html5shiv.js"></script>
+		<script type="text/javascript" src="../assets/js/respond.min.js"></script>
+		<![endif]-->
+
+		<!-- IE10 반응형 웹 버그 보완 -->
+		<!--[if gt IE 9]>
+		<link rel="stylesheet" type="text/css" href="../assets/css/ie10.css" />
+		<script type="text/javascript" src="../assets/js/ie10.js"></script>
+		<![endif]-->
+
+		<!-- 공통 스타일 시트 -->
+		<link rel="stylesheet" type="text/css" href="../assets/css/common.css">
+		<link rel="stylesheet" type="text/css" href="../assets/css/small.css" />
+		<link rel="stylesheet" type="text/css" href="../assets/css/grid.css" />
+		<!-- 개인 스타일 시트 -->
+		<link rel="stylesheet" type="text/css" href="../assets/css/ani/ani_total.css">
+		<link rel="stylesheet" type="text/css" href="../assets/css/ani/ani_write.css">
+		<link rel="stylesheet" type="text/css" href="../assets/css/btn.css" />
+		<!-- 통합 JS -->
+		<script type="text/javascript" src="../assets/js/ani/total.js"></script>
+	</head>
+
+	<body>
+		<div class="container">
+			<!-- 상단 시작 -->
+			<header>
+				<p class="hidden-xs" id="logo"><a href="../index.html"><img src="../img/logo.png" alt="logo" /></a></p>
+				<!-- 메뉴바 시작-->
+				<nav class="navbar navbar-default" role="navigation">
+					<!-- 로고 -->
+					<div class="navbar-header">
+						<!-- 반응형 메뉴 구현 기능 시작 -->
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gnb">
+							<span class="sr-only">메뉴</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- 반응형 메뉴 구현 기능 끝 -->
+						<a class="navbar-brand" href="../index.html" id = "logotxt">ANIMAL SUPPORT</a>
+					</div>
+					<div class="collapse navbar-collapse" id="gnb">
+						<ul class="nav navbar-nav">
+							<!-- 드롭다운 시작 -->
+							<li class="dropdown">
+								<a href="#" class = "dropdown-toggle" id="top-menu" data-toggle = "dropdown">후 원</a>
+								<ul class="dropdown-menu">
+									<li><a href="../sup/sup.html">프로젝트 후원</a></li>
+									<li><a href="../sup/sup_rev.html">후원 후기</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class = "dropdown-toggle" id="top-menu" data-toggle = "dropdown">입 양</a>
+								<ul class="dropdown-menu">
+									<li><a href="ani_list.html">입양</a></li>
+									<li><a href="ani_rev.html">입양 후기</a></li>
+									<li><a href="map.html">보호소 지도</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class = "dropdown-toggle" id="top-menu" data-toggle = "dropdown">활 동</a>
+								<ul class="dropdown-menu">
+									<li><a href="../info/info/info.html">활동</a></li>
+									<li><a href="../info/info/noti.html">공지사항</a></li>
+									<li><a href="../info/info/qna.html">Q&amp;A</a></li>
+								</ul>
+							</li>
+							<li class="dropdown" id="top-menu"><a href="../login/login.html">로 그 인</a></li>
+						</ul>
+					</div>
+					<!-- 메뉴 끝 -->
+				</nav>
+				<!-- 메뉴바 끝 -->
+			</header>
+			<!-- 상단 끝 -->
+			<br id="space">
+			<!-- 내용 시작 -->
+			<section>
+				<h2 class="noti">입양글작성</h2>
+					<small id="small1">AS의 입양 게시판입니다.</small>
+					<small id="small2"><span class="glyphicon glyphicon-home"></span> &gt; 입양 &gt; 글 작성</small>
+					<hr>
+				<!-- Table -->
+				<table class="table">
+					<tr>
+						<td colspan="3">
+							<label for="title">제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목 &nbsp;&nbsp;</label>
+							<input type="text" style="display : inline-block; width : 85%;" name="title" id="title" class="form-control" placeholder="제목을 입력해주세요.">
+						</td>
+					</tr>		
+					<tr>
+						<td colspan="3">
+								<label for="file_add">파 일 첨 부 &nbsp;&nbsp;</label>
+								<input type="file" style="display : inline-block; width : 85%;" name="file_add" id="file_add" class="form-control" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="ani_name">동물 이름 </label>
+							<input type="text" name="ani_name" id="ani_name" class="form-control" style="width: 60%; display: inline-block;">
+						</td>
+						<td>
+							<label for="ani_gender">동물 성별 </label>
+							<input type="text" name="ani_gender" id="ani_gender" class="form-control" style="width: 60%; display: inline-block;">
+						</td>
+						<td>
+							<label for="ani_age">동물 나이 </label>
+							<input type="text" name="ani_age" id="ani_age" class="form-control" style="width: 60%; display: inline-block;">
+						</td>
+					</tr>
+					<tr>
+						<td id="noti_com" colspan="3">
+							<div class="form-group" style="margin-bottom: -20px;">
+					            <div>
+					                <textarea name="text" id="text" class="summernote"/></textarea>
+					            </div>
+					        </div>
+						</td>
+					</tr>
+					
+				</table>
+
+				<div id="btn-sec">
+					<button class="btn btn-primary " id="cbtn" onclick="location.href='ani_list.html'">취 소</button>
+					<button class="btn btn-primary " id="obtn">확 인</button>
+				</div>
+			</section>
+			<!-- 내용 끝 -->
+			<footer>
+				<div><img src="../img/footer.png" alt="하단이미지"></div>
+				<address>
+					<br/>
+					단체명 : ANIMAL SUPPORT&nbsp;&#124;&nbsp; 전화번호 : 031-000-0000<br/>
+					주소 : 서울시 강남구 역삼동 815-4 만이빌딩 5F 그린컴퓨터아카데미<br/>
+					Copyright 2017 <a href="index.html">&copy;ANIMAL&nbsp;SUPPORT </a>All rights reserved.
+				</address>
+			</footer>
+		</div>
+	</body>
+</html>

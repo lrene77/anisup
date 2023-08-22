@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<!-- 이 파일의 경로를 config.xml에 명시해야 한다. -->
+    
+<!-- xml의 CRUD 기능을 구현하기 위한 Mapper -->
+<mapper namespace="ListboardMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="listboard" type="anisup.model.Listboard">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="mno" column="mno" />
+		<result property="listno" column="listno" />
+		<result property="listcate" column="listcate" />
+		<result property="listtitle" column="listtitle" />
+		<result property="listcont" column="listcont" />
+		<result property="wdate" column="wdate" />
+		<result property="hit" column="hit" />
+		<result property="ipAddress" column="ip_address" />
+	</resultMap>
+	
+	<!-- 데이터 저장을 위한 기능 정의 -->
+	<insert id="addListboard" parameterType="anisup.model.Listboard" useGeneratedKeys="true" keyProperty="listno">
+		INSERT INTO listboard (
+			listcate, listtitle, listcont, wdate, hit, mno
+		) VALUES (
+			#{listcate}, #{listtitle}, #{listcont}, now(), 0,
+			
+			<choose>
+				<when test="mno == 0">
+					null
+				</when>
+				<otherwise>
+					#{mno}
+				</otherwise>
+			</choose>
+		)
+	</insert>
+	
+	<!-- 게시글 정보 수정하기 -->
+	<update id="updateListboard" parameterType="anisup.model.Listboard">
+		UPDATE listboard SET
+			listcate=#{listcate},
+			listtitle=#{listtitle},
+			listcont=#{listcont},
+			ip_address=#{ipAddress}
+		WHERE listno=#{listno}
+	</update>
+	
+	<!-- 데이터 삭제를 위한 기능 정의 -->
+	<delete id="removeListboard" parameterType="anisup.model.Listboard">
+		DELETE FROM anisup WHERE listno=#{listno}
+	</delete>
+	
+	<!-- 단일행 조회를 위한 기능 정의 -->
+	<select id="selectListboardItem" parameterType="anisup.model.Listboard" resultMap="listboard">
+		SELECT listno, listcate, listtitle, listcont, DATE_FORMAT(wdate, '%Y-%m-%d') AS wdate, hit, mno
+		FROM listboard
+		WHERE listcate=#{listcate} AND listno=#{listno}
+	</select>
+	
+	<!-- 다중행 조회(목록조회)를 위한 기능 정의 -->
+	<select id="selectListboardList" parameterType="anisup.model.Listboard" resultMap="listboard">
+		SELECT listno, listcate, listtitle, listcont, DATE_FORMAT(wdate, '%Y-%m-%d') AS wdate, hit
+		FROM listboard
+		WHERE listcate=#{listcate}
+		ORDER BY listno ASC
+	</select>
+	
+	<!-- 다중행 조호 카테고리 후기들만 -->
+	<select id="selectListboardList2" parameterType="anisup.model.Listboard" resultMap="listboard">
+		SELECT listno, listcate, listtitle, listcont, DATE_FORMAT(wdate, '%Y-%m-%d') AS wdate, hit
+		FROM listboard
+		WHERE listcate='a' OR listcate='s'
+		ORDER BY listno ASC
+	</select>
+	
+	<!-- 이전글 정보를 조회 -->
+	<select id="selectPrevListboard" parameterType="anisup.model.Listboard" resultMap="listboard">
+		SELECT listno, listcate, listtitle, listcont, DATE_FORMAT(wdate, '%Y-%m-%d') AS wdate, hit, mno
+		FROM listboard
+		WHERE listcate=#{listcate} AND listno &lt; #{listno}
+		ORDER BY listno DESC
+		LIMIT 0, 1
+	</select>
+	
+	<!-- 다음글 정보를 조회 -->
+	<select id="selectNextListboard" parameterType="anisup.model.Listboard" resultMap="listboard">
+		SELECT listno, listcate, listtitle, listcont, DATE_FORMAT(wdate, '%Y-%m-%d') AS wdate, hit, mno
+		FROM listboard
+		WHERE listcate=#{listcate} AND listno &gt; #{listno}
+		ORDER BY listno ASC
+		LIMIT 0, 1
+	</select>
+	
+	<!-- 조회수 1 증가 -->
+	<update id="updateListboardHit" parameterType="anisup.model.Listboard">
+		UPDATE listboard SET hit=hit+1 WHERE listcate=#{listcate} AND listno=#{listno}
+	</update>
+	
+	<!-- 전체 게시물 수를 조회한다. -->
+	<select id="selectListboardCount" parameterType="anisup.model.Listboard" resultType="int">
+		SELECT COUNT(listno) FROM listboard
+		WHERE listcate=#{listcate}
+	</select>
+</mapper>

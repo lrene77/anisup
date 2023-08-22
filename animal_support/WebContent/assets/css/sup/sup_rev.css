@@ -1,0 +1,30 @@
+/*#sup-write {
+    background-color: #2457BD;
+    color: white;
+}*/
+
+.btn-primary{
+	line-height: 15px;
+	width: 100px;
+	height: 35px;
+	background-color: #2457BD;
+    color: white;
+}
+
+@media (max-width: 767px){
+	.container {
+	     overflow:hidden; 
+	}
+	.table>tbody>tr>td {
+	padding: 5px;
+}
+}
+.table>tbody>tr>td {
+	padding: 13px;
+}
+
+@media(max-width: 768px){
+	.table>tbody>tr>td {
+	padding: 8px;
+}
+}

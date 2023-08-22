@@ -1,0 +1,62 @@
+/* 헤더칸 스크롤숨기기 */
+.navbar-collapse{
+	max-height: 400px;
+}
+
+/* 글자 간격 및 짤림방지 */
+.caption{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.caption p{
+	text-align: right;
+	margin-top: 8px;
+}
+/* 분양중,신청인원 링크제거 */
+.caption span{
+	text-decoration: none;
+	color: #000;
+}
+hr{
+	border: 1.5px solid rgb(190, 190, 190);
+}
+.btn-primary{
+	background-color: #2457BD;
+}
+
+/*navbar media 쿼리 시작*/
+@media(max-width: 767px){
+	.thumbnail{
+		min-height: 330px;
+	}
+	.thumbnail img{
+		max-width: 708px;
+		min-height: 533px;
+	}
+}
+@media(min-width: 768px) and (max-width: 991px){
+	.thumbnail{
+		min-height: 300px;
+	}
+	.thumbnail img{
+		min-height: 350px;
+	}
+}
+@media(min-width: 992px) and (max-width: 1199px){
+	.thumbnail{
+		min-height: 250px;
+	}
+	.thumbnail img{
+		min-height: 210px;
+	}					
+}
+@media(min-width: 1200px){
+	.thumbnail{
+		min-height: 300px;
+	}
+	.thumbnail img{
+		min-height: 260px;
+	}	
+}
+

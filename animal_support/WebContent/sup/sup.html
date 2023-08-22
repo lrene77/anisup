@@ -1,0 +1,346 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>ANIMAL SUPPORT</title>
+
+		<!-- 모바일 웹 페이지 설정 -->
+		<link rel="shortcut icon" href="../assets/ico/favicon.ico" />
+		<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-144-precomposed.png" />
+
+		<!-- Javascript -->
+		<script src="../assets/js/jquery.min.js"></script>
+		<script src="../assets/js/bootstrap.min.js"></script>
+		<script src="../assets/js/common.js"></script>
+		<script src="../assets/js/thum_carousel.js"></script>
+
+		<!-- bootstrap -->
+		<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+
+		<!-- 나눔고딕 웹 폰트 적용 -->
+		<link rel="stylesheet" type="text/css" href="../assets/css/nanumfont.css" />
+
+		<!-- 반응형 웹을 지원하지 않을 경우 -->
+		<!-- <link rel="stylesheet" href="assets/css/non-responsive.css" /> -->
+
+		<!-- IE8 이하 버전 지원 -->
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="assets/js/html5shiv.js"></script>
+		<script type="text/javascript" src="assets/js/respond.min.js"></script>
+		<![endif]-->
+
+		<!-- IE10 반응형 웹 버그 보완 -->
+		<!--[if gt IE 9]>
+		<link rel="stylesheet" type="text/css" href="assets/css/ie10.css" />
+		<script type="text/javascript" src="assets/js/ie10.js"></script>
+		<![endif]-->
+		
+		<!-- 공통 스타일 시트 -->
+		<link rel="stylesheet" type="text/css" href="../assets/css/common.css">
+
+		<!-- sup.css -->
+		<link rel="stylesheet" type="text/css" href="../assets/css/sup/sup.css" />
+
+		<link rel="stylesheet" type="text/css" href="../assets/css/small.css" />
+		
+		<link rel="stylesheet" type="text/css" href="../assets/css/list.css" />
+
+		<link rel="stylesheet" type="text/css" href="../assets/css/btn.css">
+		<link rel="stylesheet" type="text/css" href="../assets/css/pagination.css" />
+
+	</head>
+	<body">
+		<div class="container">
+			<!-- 상단 시작 -->
+			<header>
+				<p class="hidden-xs" id="logo"><a href="../index.html"><img src="../img/logo.png" alt="logo" /></a></p>
+				<!-- 메뉴바 시작-->
+				<nav class="navbar navbar-default" role="navigation">
+					<!-- 로고 -->
+					<div class="navbar-header">
+						<!-- 반응형 메뉴 구현 기능 시작 -->
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gnb">
+							<span class="sr-only">메뉴</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- 반응형 메뉴 구현 기능 끝 -->
+						<a class="navbar-brand" href="../index.html" id = "logotxt">ANIMAL SUPPORT</a>
+					</div>
+					<div class="collapse navbar-collapse" id="gnb">
+						<ul class="nav navbar-nav">
+							<!-- 드롭다운 시작 -->
+							<!-- <li id=blank></li> -->
+							<li class="dropdown">
+								<a href="#" class = "dropdown-toggle" id="top-menu" data-toggle = "dropdown">후 원</a>
+								<ul class="dropdown-menu">
+									<li><a href="../sup/sup.html">프로젝트 후원</a></li>
+									<li><a href="../sup/sup_rev.html">후원 후기</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class = "dropdown-toggle" id="top-menu" data-toggle = "dropdown">입 양</a>
+								<ul class="dropdown-menu">
+									<li><a href="../ani/ani_list.html">입양</a></li>
+									<li><a href="../ani/ani_rev.html">입양 후기</a></li>
+									<li><a href="../ani/map.html">보호소 지도</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class = "dropdown-toggle" id="top-menu" data-toggle = "dropdown">활 동</a>
+								<ul class="dropdown-menu">
+									<li><a href="../info/info/info.html">활동</a></li>
+									<li><a href="../info/info/noti.html">공지사항</a></li>
+									<li><a href="../info/info/qna.html">Q&amp;A</a></li>
+								</ul>
+							</li>
+							<li class="dropdown"><a href="../login/login.html">로 그 인</a></li>
+						</ul>
+					</div>
+					<!-- 메뉴 끝 -->
+				</nav>
+				<!-- 메뉴바 끝 -->
+			</header>
+			<!-- 상단 끝 -->
+			<br id="space">
+			<section>				
+				<h2>후원</h2>
+				<small>후원에 참여하실 수 있는 게시판입니다.</small>
+				<small id="small2"><span class="glyphicon glyphicon-home"></span> &gt; 후원 </small>
+				<hr/>
+
+				<!-- 진행 / 종료 / 모두 -->			
+				<div class="btn-toolbar">
+					<div id="btn_status" class="btn-group pull-right">
+						<button type="button" class="btn btn-default">진행</button>
+						<button type="button" class="btn btn-default">종료</button>
+						<button type="button" class="btn btn-default active">모두</button>
+					</div>					
+				</div>
+				<br/>
+
+				<!-- 데스크탑: 한 줄에 4개, 태블릿: 한 줄에 2개 씩 배치되도록 그리드 구성 -->
+				<div class="row"  align="center">
+					<!-- 게시물 하나 시작 -->					
+					<div class="col-xs-12 col-sm-6 col-md-3 ">					
+						<div class="thumbnail">
+						<a id="thumb_a" href="sup_ing.html" style="text-decoration: none; color: black;">					
+							<img alt="강아지" src="img/dog.jpg" />
+							
+							<div id="title">
+								<span id="badge_ing" class="badge pull-left">45일 남음</span>
+								<h4><b>[길 위의 천사들에게 희망 전달 프로젝트]</b></h4>
+							</div>
+							
+							<!-- <div id="title">
+								<h3><b><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">[길 위의 천사들에게 희망 전달 프로젝트]</a></b></h3>
+							</div>
+							<div id="collapseOne" class="panel-collapse collapse">
+								<div class="panel-body">
+									첫 번째 항목의 내용입니다.첫 번째 항목의 내용입니다.첫 번째 항목의 내용입니다.첫 번째 항목의 내용입니다.첫 번째 항목의 내용입니다.첫 번째 항목의 내용입니다.첫 번째 항목의 내용입니다.첫 번째 항목의 내용입니다.첫 번째 항목의 내용입니다.첫 번째 항목의 내용입니다.첫 번째 항목의 내용입니다.첫 번째 항목의 내용입니다.첫 번째 항목의 내용입니다.첫 번째 항목의 내용입니다.첫 번째 항목의 내용입니다.첫 번째 항목의 내용입니다.
+								</div>
+								<a href="sup_ing.html" class="btn btn-info">자세히 보기</a>
+							</div> -->
+								
+								<p>
+									<div class="progress">
+									<!-- progress-bar-success 적용 -->
+										<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+											<span class="sr-only">40% Complete (success)</span>
+										</div>
+									</div>
+								</p>
+								<ul class="list-unstyled list-inline">
+									<li><h4><strong>2,000,000</strong></h4></li>
+									<li class="pull-right"><h4 style="color: #cc3d3d"><strong>40%</strong></h4></li>
+								</ul>
+							
+						</a>
+						</div>										
+					</div>					
+					<!-- 게시물 하나 끝 -->
+
+					<!-- 게시물 하나 시작 -->
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="thumbnail">
+						<a id="thumb_a" href="#" >	
+							<img alt="느낌 아니까!!" src="img/1.png">
+							<span id="badge_ing" class="badge pull-left">45일 남음</span>
+							
+							<div id="title">
+								<h4><b>[아이들 보금자리 마련 프로젝트]</b></h4>
+							</div>
+								
+								<p>
+									<div class="progress">
+									<!-- progress-bar-success 적용 -->
+										<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+											<span class="sr-only">40% Complete (success)</span>
+										</div>
+									</div>
+								</p>
+								<ul class="list-unstyled list-inline">
+									<li><h4><strong>2,000,000</strong></h4></li>
+									<li class="pull-right"><h4 style="color: #cc3d3d"><strong>40%</strong></h4></li>
+								</ul>
+							</a>
+						</div>
+					</div>
+					<!--// 게시물 하나 끝 -->
+
+					<!-- 게시물 하나 시작 -->
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="thumbnail">
+						<a id="thumb_a" href="#">	
+							<img alt="그림자놀이" src="img/3.png">
+							<span id="badge_ing" class="badge pull-left">45일 남음</span>
+							
+							<div id="title">
+								<h4><b>[겨울철 담요 후원 프로젝트]</b></h4>
+							</div>
+								
+								<p>
+									<div class="progress">
+									<!-- progress-bar-success 적용 -->
+										<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+											<span class="sr-only">40% Complete (success)</span>
+										</div>
+									</div>
+								</p>
+								<ul class="list-unstyled list-inline">
+									<li><h4><strong>2,000,000</strong></h4></li>
+									<li class="pull-right"><h4 style="color: #cc3d3d"><strong>40%</strong></h4></li>
+								</ul>
+							</a>
+						</div>
+					</div>
+					<!--// 게시물 하나 끝 -->
+
+					<!-- 게시물 하나 시작 -->
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="thumbnail">
+						<a id="thumb_a" href="#">	
+							<img alt="캐리비안의 해적" src="img/2.png">
+							<span id="badge_ing" class="badge pull-left">45일 남음</span>
+							
+							<div id="title">
+								<h4><b>[아픈 아이들 진료비 후원 프로젝트]</b></h4>
+							</div>
+								
+								<p>
+									<div class="progress">
+									<!-- progress-bar-success 적용 -->
+										<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+											<span class="sr-only">40% Complete (success)</span>
+										</div>
+									</div>
+								</p>
+								<ul class="list-unstyled list-inline">
+									<li><h4><strong>2,000,000</strong></h4></li>
+									<li class="pull-right"><h4 style="color: #cc3d3d"><strong>40%</strong></h4></li>
+								</ul>
+							</a>
+						</div>
+					</div>
+					<!--// 게시물 하나 끝 -->	
+
+					<!-- 게시물 하나 시작 -->
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="thumbnail">
+						<a id="thumb_a" href="#">	
+							<img alt="그림자놀이" src="img/3.png">
+							<span id="badge_end" class="badge pull-left">모금 완료</span>
+							
+							<div id="title">
+								<h4 style="color: #ccc"><b>[겨울철 담요 후원 프로젝트</b></h4>
+							</div>
+								
+								<p>
+									<div class="progress">
+									<!-- progress-bar-success 적용 -->
+										<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+											<span class="sr-only">100% Complete (success)</span>
+										</div>
+									</div>
+								</p>
+								<ul class="list-unstyled list-inline">
+									<li><h4 style="color: #ccc"><strong>2,000,000</strong></h4></li>
+									<li class="pull-right"><h4 style="color: #ccc"><strong>40%</strong></h4></li>
+								</ul>
+							</a>
+						</div>
+					</div>
+					<!--// 게시물 하나 끝 -->
+
+					<!-- 게시물 하나 시작 -->
+					<div class="col-xs-12 col-sm-6 col-md-3">
+						<div class="thumbnail">
+						<a id="thumb_a" href="#">	
+							<img alt="캐리비안의 해적" src="img/2.png">
+							<span id="badge_end" class="badge pull-left">모금 완료</span>
+							
+							<div id="title">
+								<h4 style="color: #ccc"><b>[아픈 아이들 진료비 후원 프로젝트]</b></h4>
+							</div>
+								
+								<p>
+									<div class="progress">
+									<!-- progress-bar-success 적용 -->
+										<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+											<span class="sr-only">100% Complete (success)</span>
+										</div>
+									</div>
+								</p>
+								<ul class="list-unstyled list-inline">
+									<li><h4 style="color: #ccc"><strong>2,000,000</strong></h4></li>
+									<li class="pull-right"><h4 style="color: #ccc"><strong>40%</strong></h4></li>
+								</ul>
+							</a>
+						</div>
+					</div>
+					<!--// 게시물 하나 끝 -->
+				</div>
+
+				
+				<!-- 글작성 버튼 시작 -->
+				<div style="width: 100%;" align="right">
+					<button class="btn" id="wbtn" onclick="location.href='sup_write.html'";><span class="glyphicon glyphicon-pencil">글 작성</span></button>
+				</div>
+				<!-- 글작성 버튼 끝 -->
+
+				<br/><br/><br/>
+
+				<!-- 페이지번호 (상태표시) 시작 -->
+				<div align="center">
+					<ul class="pagination">			 
+					  <li class="disabled"><a href="#">&laquo;</a></li>
+					  <li class="active"><span>1 <span class="sr-only">(current)</span></span></li>
+					  <li><a href="#">2</a></li>
+					  <li><a href="#">3</a></li>
+					  <li><a href="#">4</a></li>
+					  <li><a href="#">5</a></li>
+					  <li><a href="#">&raquo;</a></li>
+					</ul>
+				</div>
+				<!-- 페이지번호 (상태표시) 끝 -->	
+
+			</section>
+			<!-- 내용 끝 -->
+
+			<br/><br/>
+
+			<footer>
+				<div><img src="../img/footer.png" alt="하단이미지"></div>
+				<address>
+					<br/>
+					단체명 : ANIMAL SUPPORT&nbsp;&#124;&nbsp; 전화번호 : 031-000-0000<br/>
+					주소 : 서울시 강남구 역삼동 815-4 만이빌딩 5F 그린컴퓨터아카데미<br/>
+					Copyright 2017 <a href="index.html">&copy;ANIMAL&nbsp;SUPPORT </a>All rights reserved.
+				</address>
+			</footer>
+		</div>
+	</body>
+</html>

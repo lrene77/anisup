@@ -1,0 +1,152 @@
+/*아코디언 title 시작*/
+.panel-title {
+	text-align: center;
+    color: white;
+}
+
+.panel-title > a {
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 0;
+	margin: 0;
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+/*아코디언 title 끝*/
+
+/*취소 확인 버튼 시작*/
+#cbtn, #obtn{
+    width: 100px;
+    height: 35px;
+    /*line-height: 20px;*/
+    margin-bottom: 20px;
+}
+
+#cbtn{
+    background-color: #740000;
+    border: 0;
+}
+
+#cbtn:hover{
+    background-color: #900000;}
+
+#btn-sec{
+    width: 80%;
+    margin: auto;
+    text-align: right;
+}
+/*취소 확인 버튼 끝*/
+
+.form-control {
+    display: inline-block;
+    width: 80%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;  
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-right: 15px;
+    margin-left: 15px;
+    font-weight: 700;
+}
+
+hr {
+	border: 1.5px solid rgb(190, 190, 190);
+}
+#accordion {
+	margin: auto;
+  	width: 80%;
+  	background-color: transparent;
+    margin-bottom: 10px;
+  	/*border-top: 1px solid rgb(190, 190, 190);*/
+}
+td{
+	border: 1px solid rgb(190, 190, 190);
+}
+
+/*후원 시작일 종료일 기간 입력 텍스트*/
+.form-control[readonly] {
+    background-color: #fff;
+    cursor: default;
+}
+
+/*div.panel-heading{
+    background-color: rgb(64, 64, 64);
+}*/
+
+#accordion .panel-heading {
+    background-color: rgb(64, 64, 64);
+}
+
+#cbtn {
+    background-color: #740000;
+    border: 1px solid #740000;
+}
+
+@media(max-width: 768px){
+    #space{
+        display: none;
+    }
+
+    #accordion {
+        margin: auto;
+        width: 100%;
+        background-color: transparent;
+        margin-bottom: 10px;
+        /*border-top: 1px solid rgb(190, 190, 190);*/
+    }
+
+    table {
+        margin: auto;
+        width: 100%;
+        background-color: transparent;
+        border-top: 1px solid rgb(190, 190, 190);
+    }
+
+    #btn-sec{
+        width: 100%;
+        margin: auto;
+        text-align: right;
+    }
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+    padding: 8px; 
+    line-height: 1.428571429;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+
+.table {
+    width: 100%;
+}
+
+.panel-body {
+     padding: 0; 
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+#td_area{
+    padding: 8px;
+}
+#noti_com {
+    padding: 0;
+}

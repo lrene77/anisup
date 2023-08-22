@@ -1,0 +1,15 @@
+.caption p{
+	text-align: right;
+	margin-top: 8px;
+}
+hr{
+	border: 1.5px solid rgb(190, 190, 190);
+}
+/* 지도 크기조정 */
+#map{
+	border: 1px solid #000; min-height: 700px;
+}
+.btn-default{
+	width: 100px;
+	height: 30px;
+}

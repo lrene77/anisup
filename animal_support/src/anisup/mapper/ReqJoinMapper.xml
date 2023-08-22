@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 XML의 구조대로 구현될 클래스의 이름 => Impl클래스를 대체한다. -->
+<mapper namespace="ReqJoinMapper">
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="reqjoin" type="anisup.model.ReqJoin">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="anino" column="anino" />
+		<result property="reqtitle" column="title" />
+		<result property="name" column="name" />
+		<result property="tel" column="tel" />
+		<result property="addr1" column="addr1" />
+		<result property="reqjob" column="reqjob" />
+		<result property="reqcont" column="reqcont" />
+		<result property="reqno" column="reqno" />
+	</resultMap>
+	<!--
+		단일행 조회를 위한 기능 정의
+		<select id="메서드이름" parameterType="파라미터의 데이터 타입" resultMap="리턴될 Beans이름">
+	-->
+	<select id="myJoinReq" parameterType="anisup.model.ReqJoin" resultMap="reqjoin">
+		<!-- "#{변수명}" 으로 표시된 곳에 파라미터가 치환된다. -->
+		select req.reqno,req.reqtitle,member.name, member.tel,member.addr1, req.reqjob,req.reqcont
+		from req inner join member on req.mno = member.mno inner join ani on ani.anino = req.anino
+		where req.anino = ani.anino;
+		
+	</select>
+
+	<!-- 보호소 마이페이지 입양신청서 목록 조인문  req+ member 이름-->
+	<select id="sheMyReqList" parameterType="anisup.model.ReqJoin" resultMap="reqjoin">
+		<!-- "#{변수명}" 으로 표시된 곳에 파라미터가 치환된다. -->
+<!-- 			select req.reqno, req.reqtitle, DATE_FORMAT(req.reqdate,'%Y-%m-%d') AS reqdate, member.name
+			from req inner join member on req.mno = member.mno
+			order by reqno desc; -->
+			
+<!-- 			select req.reqno, req.reqtitle, DATE_FORMAT(req.reqdate,'%Y-%m-%d') AS reqdate, member.name
+			from req inner join member on req.mno = member.mno inner join ani on req.anino = ani.anino
+			order by reqno desc
+			where ani.anino = req.anino ; -->
+			
+<!-- 			select req.reqno, req.reqtitle, DATE_FORMAT(req.reqdate,'%Y-%m-%d') AS reqdate
+			from req inner join ani on req.anino = ani.anino
+			where ani.anino = req.reqno 
+			order by req.reqno desc; -->
+			
+			select req.reqno, req.reqtitle, member.name,DATE_FORMAT(req.reqdate,'%Y-%m-%d') AS reqdate, member.tel, member.addr1, req.reqjob, req.reqcont
+			from req inner join member on req.mno = member.mno inner join ani on req.reqno = ani.anino
+			where ani.anino = req.anino;			
+			
+	</select>	
+	
+		<select id="selectReqRead" parameterType="anisup.model.ReqJoin" resultMap="reqjoin">
+		<!-- "#{변수명}" 으로 표시된 곳에 파라미터로 전달된
+			 Beans의 멤버변수값이 치환된다. -->
+		select req.reqno,req.reqtitle,member.name, member.tel,member.addr1, req.reqjob,req.reqcont
+		from req inner join member on req.mno = member.mno
+		where req.reqno = #{reqno};	
+		
+	</select>
+</mapper>

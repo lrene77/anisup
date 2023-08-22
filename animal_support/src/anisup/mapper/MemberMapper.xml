@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 파일의 경로를 config.xml에 명시해야 한다. -->
+
+<!-- xml의 CRUD 기능을 구현하기 위한 Mapper -->
+<mapper namespace="MemberMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="member" type="anisup.model.Member">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="mno" column="mno" />
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="pw" column="pw" />
+		<result property="email" column="email" />
+		<result property="birth" column="birth" />
+		<result property="phone" column="phone" />
+		<result property="tel" column="tel" />
+		<result property="postcode" column="postcode" />
+		<result property="addr1" column="addr1" />
+		<result property="addr2" column="addr2" />
+		<result property="pwq" column="pwq" />
+		<result property="pwa" column="pwa" />
+		<result property="mtype" column="mtype" />
+		<result property="giveprice" column="giveprice" />
+	</resultMap>
+	
+	<!-- 아이디 중복 검사 -->
+	<select id="selectUserIdCount" parameterType="anisup.model.Member"
+		resultType="int">
+		SELECT count(id) FROM member WHERE id=#{id}
+	</select>
+
+	<!-- 이메일 중복검사 수행 -->
+	<select id="selectEmailCount" parameterType="anisup.model.Member"
+		resultType="int">
+		SELECT count(id) FROM member WHERE email=#{email}
+	</select>
+
+	<!-- 회원 가입 -->
+	<insert id="addMember" parameterType="anisup.model.Member"
+		keyProperty="mno" useGeneratedKeys="true">
+		INSERT INTO member(
+		name,id,pw,email,birth,phone,tel,postcode,addr1,addr2,pwq,pwa,mtype
+		)VALUES(
+		#{name},#{id},password(#{pw}),#{email},#{birth},#{phone},#{tel},#{postcode},#{addr1},#{addr2},#{pwq},#{pwa},#{mtype}
+		)
+	</insert>
+
+	<!-- 로그인 -->
+	<select id="selectLoginInfo" parameterType="anisup.model.Member"
+		resultMap="member">
+		SELECT
+		mno,name,id,pw,email,
+		DATE_FORMAT(birth,'%Y-%m-%d') AS birth,
+		phone,tel,postcode,addr1,addr2,pwq,pwa,mtype
+		FROM member
+		WHERE id=#{id} AND pw=password(#{pw})
+		ORDER BY mno DESC
+		LIMIT 0, 1
+	</select>
+
+	<!-- 회원 탈퇴 -->
+	<!-- <delete id="removeMember" parameterType="anisup.model.Member"> DELETE 
+		FROM member WHERE mno=#{mno}; </delete> -->
+
+	<!-- 회원 수정 -->
+	<update id="editMember" parameterType="anisup.model.Member"> UPDATE 
+		member SET pw=#{pw},email=#{email},tel=#{tel},phone=#{phone},postcode=#{postcode},addr1=#{addr1}, 
+		addr2=#{addr2},pwq=#{pwq},pwa=#{pwa} 
+		<if test="newUserPw != null and newUserPw!=' '"> 
+			,pw=password(#{newUserPw}) 
+		</if> 
+		WHERE id=#{id} 
+	</update>
+	<!-- 아이디 찾기 -->
+	<select id="selectIdSear" parameterType="anisup.model.Member"
+		resultMap="member">
+		SELECT id
+		FROM member
+		WHERE name=#{name} AND birth=#{birth}
+		ORDER BY mno DESC
+		LIMIT 0, 1
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<update id="updateMemberPassword" parameterType="anisup.model.Member">
+		UPDATE member SET pw=password(#{pw})
+		WHERE id=#{id} AND pwq=#{pwq} AND pwa=#{pwa};
+	</update>
+	
+	<!-- 관리자 회원 조회 -->
+	<select id="selectAdmin" parameterType="anisup.model.Member" resultMap="member">
+		SELECT member.mno,member.id,member.name,member.mtype
+		FROM member
+		ORDER BY mno DESC
+	</select>
+	
+	<!-- 일련번호에 의한 회원정보 조회 -->
+	<select id="selectMember" parameterType="anisup.model.Member" resultMap="member">
+		SELECT *
+		FROM member
+		WHERE id=#{id}
+	</select>
+</mapper>

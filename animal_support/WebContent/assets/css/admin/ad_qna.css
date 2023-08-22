@@ -1,0 +1,111 @@
+.table th:first-child{
+		width: 5%;
+}
+
+.table th:nth-child(2){
+		width: 10%;
+}
+
+.table th:nth-child(3){
+		width: 35%;
+}
+
+.table th:nth-child(4){
+		width: 10%;
+}
+
+.table th:nth-child(5){
+		width: 15%;
+}
+
+.table th:nth-child(6){
+		width: 10%;
+}
+
+.table th:last-child{
+		width: 15%;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+	vertical-align: middle;
+}
+
+label{
+	margin-left: 15px;
+	margin-right: 50px;
+}
+
+select{
+	width: 10%;
+	height: 30px;
+	margin-right: 20px;
+}
+
+#sc{
+	width: 20%;
+	height: 30px;
+}
+
+.mem_kind{
+	margin-top: 20px;
+	display: inline-block;
+	border: 2px solid #ddd;
+	height: 30px;
+	margin-right: 20px;
+}
+
+h4{
+	font-weight: bold;
+	letter-spacing: 0.5em;
+}
+
+/* 테이블 안의 a태그 텍스트 속성 제거 */
+.table a{
+	text-decoration: none !important;
+	color: black;
+}
+.table a:hover{
+	text-decoration: none !important;
+	color: black;
+}
+
+@media(max-width: 768px){
+	.table th:first-child{
+		width: 5%;
+	}
+
+	.table th:nth-child(2){
+			width: 10%;
+	}
+
+	.table th:nth-child(3){
+			width: 45%;
+	}
+
+	.table th:nth-child(4){
+			width: 15%;
+	}
+
+	.table th:nth-child(5){
+			width: 10%;
+	}
+
+	.table th:last-child{
+			width: 15%;
+	}
+}
+
+/* 입양 시작일 종료일 기간 입력 텍스트 시작 */
+.form-control[readonly] {
+    background-color: #fff;
+    cursor: default;
+}
+
+#sc1, #sbtn, #sc2 {
+	display: inline;
+}
+/* 입양 시작일 종료일 기간 입력 텍스트 끝 */
+#sc1, #sc2{
+	width: 20%;
+	height: 30px;
+}

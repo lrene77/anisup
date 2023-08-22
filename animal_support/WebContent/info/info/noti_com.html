@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>ANIMAL SUPPORT</title>
+
+		<!-- 모바일 웹 페이지 설정 -->
+		<link rel="shortcut icon" href="../../assets/ico/favicon_1.ico" />
+		<link rel="apple-touch-icon-precomposed" href="../../assets/ico/apple-touch-icon-144-precomposed.png" />
+
+		<!-- Javascript -->
+		<script src="../../assets/js/jquery.min.js"></script>
+		<script src="../../assets/js/bootstrap.min.js"></script>
+		<script src="../../assets/js/common.js"></script>
+
+		<!-- bootstrap -->
+		<link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.min.css" />
+
+		<!-- 나눔고딕 웹 폰트 적용 -->
+		<link rel="stylesheet" type="text/css" href="../../assets/css/nanumfont.css" />
+
+		<!-- 반응형 웹을 지원하지 않을 경우 -->
+		<!-- <link rel="stylesheet" href="../assets/css/non-responsive.css" /> -->
+
+		<!-- IE8 이하 버전 지원 -->
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="../assets/js/html5shiv.js"></script>
+		<script type="text/javascript" src="../assets/js/respond.min.js"></script>
+		<![endif]-->
+
+		<!-- IE10 반응형 웹 버그 보완 -->
+		<!--[if gt IE 9]>
+		<link rel="stylesheet" type="text/css" href="../assets/css/ie10.css" />
+		<script type="text/javascript" src="../assets/js/ie10.js"></script>
+		<![endif]-->
+
+		<!-- sweet alert -->
+		<link rel="stylesheet" type="text/css" href="../../plugins/sweetalert/sweetalert.css">
+		<script type="text/javascript" src="../../plugins/sweetalert/sweetalert.min.js"></script>
+
+		<!-- 공통 스타일 시트 -->
+		<link rel="stylesheet" type="text/css" href="../../assets/css/common.css">
+		<link rel="stylesheet" type="text/css" href="../../assets/css/info/com.css" />
+		<link rel="stylesheet" type="text/css" href="../../assets/css/small.css" />
+		<link rel="stylesheet" type="text/css" href="../../assets/css/grid.css" />
+		<link rel="stylesheet" type="text/css" href="../../assets/css/btn.css" />
+	</head>
+	<body">
+		<div class="container">
+			<!-- 상단 시작 -->
+			<header>
+				<p class="hidden-xs" id="logo"><a href="../../index.html"><img src="../img/logo.png" alt="logo" /></a></p>
+				<!-- 메뉴바 시작-->
+				<nav class="navbar navbar-default" role="navigation">
+					<!-- 로고 -->
+					<div class="navbar-header">
+						<!-- 반응형 메뉴 구현 기능 시작 -->
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gnb">
+							<span class="sr-only">메뉴</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- 반응형 메뉴 구현 기능 끝 -->
+						<a class="navbar-brand" href="../../index.html" id = "logotxt">ANIMAL SUPPORT</a>
+					</div>
+					<div class="collapse navbar-collapse" id="gnb">
+						<ul class="nav navbar-nav">
+							<!-- 드롭다운 시작 -->
+							<!-- <li id=blank></li> -->
+							<li class="dropdown">
+								<a href="#" class = "dropdown-toggle" id="top-menu" data-toggle = "dropdown">후 원</a>
+								<ul class="dropdown-menu">
+									<li><a href="../../sup/sup.html">프로젝트 후원</a></li>
+									<li><a href="../../sup/sup_rev.html">후원 후기</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class = "dropdown-toggle" id="top-menu" data-toggle = "dropdown">입 양</a>
+								<ul class="dropdown-menu">
+									<li><a href="../../ani/ani_list.html">입양</a></li>
+									<li><a href="../../ani/ani_rev.html">입양 후기</a></li>
+									<li><a href="../../ani/map.html">보호소 지도</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="info.html" class = "dropdown-toggle" id="top-menu" data-toggle = "dropdown">활 동</a>
+								<ul class="dropdown-menu">
+									<li><a href="info.html">활동</a></li>
+									<li><a href="noti.html">공지사항</a></li>
+									<li><a href="qna.html">Q&amp;A</a></li>
+								</ul>
+							</li>
+							<li class="dropdown"><a href="../../login/login.html">로 그 인</a></li>
+						</ul>
+					</div>
+					<!-- 메뉴 끝 -->
+				</nav>
+				<!-- 메뉴바 끝 -->
+			</header>
+			<!-- 상단 끝 -->
+			<!-- 내용 시작 -->
+			<br id="space">
+			<section>
+				<h2 class="noti">공지사항</h2>
+				<small id="small1">AS의 공지가 올라오는 게시판입니다.</small>
+				<small id="small2"><span class="glyphicon glyphicon-home"></span> &gt; 활동 &gt; 공지사항 &gt; 상세보기</small>
+				<hr>
+				<!-- Table -->
+				<table class="table" id="com_table1">
+					<tr>
+						<td colspan="2"><b>[거절 사유]모집내역 글 제목</b></td>
+						<td id="noti_category" class="a"><b>공지사항</b></td>
+					</tr>		
+					<tr>
+						<td><b>Admin</b></td>
+						<td id="date22"><b>2017-01-01</b></td>
+						<td class="a"><b>380</b></td>
+					</tr>
+					<tr>
+						<td colspan="3" height="500">공지사항 글 내용을 가져옵니다.</td>
+					</tr>
+				</table>
+				<table class="table" id="com_table2">
+					<tr>
+						<td colspan="2" id="com">
+							<textarea id="com_content"></textarea>
+						</td>
+						<td id="com">
+							<button class="btn btn-primary" id="com_ok">등&nbsp;&nbsp;록</button>
+						</td>
+					</tr>
+				</table>
+
+				<div class="comment">
+					<!-- 웹진 박스를 목록으로 구성하기 위한 구조 입니다. -->
+					<ul class="media-list">
+						<!-- 목록의 개별 항목이 웹진 박스로 구성됩니다. -->
+
+					</ul>	
+				</div>
+
+				<div id="btn-sec">
+					<button class="btn btn-info " id="lbtn" onclick="location.href='noti.html'";><span class="glyphicon glyphicon-list"> 목 록</span></button>
+				</div>
+			</section>
+			<!-- 내용 끝 -->
+			<footer>
+				<div><img src="../../img/footer.png" alt="하단이미지"></div>
+				<address>
+					<br/>
+					단체명 : ANIMAL SUPPORT&nbsp;&#124;&nbsp; 전화번호 : 031-000-0000<br/>
+					주소 : 서울시 강남구 역삼동 815-4 만이빌딩 5F 그린컴퓨터아카데미<br/>
+					Copyright 2017 <a href="../../index.html">&copy;ANIMAL&nbsp;SUPPORT </a>All rights reserved.
+				</address>
+			</footer>
+		</div>
+	</body>
+</html>

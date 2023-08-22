@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 XML의 구조대로 구현될 클래스의 이름 -->
+<mapper namespace="SupMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="sup" type="anisup.model.Sup">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="mno" column="mno" />
+		<result property="supno" 	column="supno" />
+		<result property="suptitle" column="suptitle" />
+		<result property="supcont" 	column="supcont" />
+		<result property="supstart"	column="supstart" />
+		<result property="supend" column="supend" />
+		<result property="supprice" column="supprice" />
+		<result property="supnow" column="supnow" />
+		<result property="supstat" column="supstat" />
+		<result property="suping" column="suping" />
+		<result property="supbill" column="supbill" />
+		<result property="supacname" column="supacname" />
+		<result property="supbank" column="supbank" />
+		<result property="supacc" column="supacc" />
+		<result property="wdate" column="wdate" />
+		<result property="imagePath" column="image_path" />
+		<result property="supDays" column="supDays" />
+	</resultMap>
+			
+	<!-- 후원 글작성 -->
+	<insert id="addSup" parameterType="anisup.model.Sup"
+		useGeneratedKeys="true" keyProperty="supno">
+		<!-- "#{변수명}" 으로 표시된 곳에 파라미터로 전달된 Beans의 멤버변수값이 치환된다. -->
+		INSERT INTO sup (mno, suptitle, supcont, supstart, supend, supprice, supacname, supbank, supacc, wdate) 
+		VALUES (#{mno}, #{suptitle}, #{supcont}, #{supstart}, #{supend}, #{supprice}, #{supacname}, #{supbank}, #{supacc}, now())
+	</insert>		
+			
+	<!-- 게시물 목록을 조회한다 -->
+	<select id="selectSupList" parameterType="anisup.model.Sup"
+	 resultMap="sup">
+		SELECT
+			mno, supno, suptitle, supcont, DATE_FORMAT(supstart, '%Y-%m-%d') AS supstart, DATE_FORMAT(supend, '%Y-%m-%d') AS supend, supprice, supnow, supstat, suping, supbill, supacname, supbank, supacc, DATE_FORMAT(wdate, '%Y-%m-%d') AS wdate, supDays
+			,( SELECT concat(file_dir,'/',file_name) FROM file
+			   WHERE supno=sup.supno
+					 AND
+					 content_type LIKE ('image/%')
+			   ORDER BY id ASC LIMIT 0, 1
+			) as image_path
+		FROM sup	
+		ORDER BY supno DESC
+		LIMIT #{limitStart}, #{listCount}	
+	</select>
+	
+	<!-- 전체 게시물 수를 조회한다 -->
+	<select id="selectSupCount" parameterType="anisup.model.Sup" resultType="int">
+		SELECT COUNT(supno) FROM sup
+	</select>
+	
+	<!-- 후원 단일행 조회하기 -->
+	<select id="selectSupItem" parameterType="anisup.model.Sup"
+		resultMap="sup">
+		<!-- "#{변수명}" 으로 표시된 곳에 파라미터로 전달된 Beans의 멤버변수값이 치환된다. -->
+		SELECT
+			mno, supno, suptitle, supcont, DATE_FORMAT(supstart, '%Y-%m-%d') AS supstart, DATE_FORMAT(supend, '%Y-%m-%d') AS supend, supprice, supnow, supstat, suping, supbill, supacname, supbank, supacc, DATE_FORMAT(wdate, '%Y-%m-%d') AS wdate, supDays, image_path
+		FROM sup
+		WHERE supno=#{supno}
+	</select>			
+
+	<!-- 데이터 갱신을 위한 기능 정의 (기부금액 업데이트) -->
+	<update id="editSupBySupNow" parameterType="anisup.model.Sup">
+		UPDATE sup SET
+			supnow=#{supnow}
+		WHERE supno=#{supno}
+	</update>
+
+	<update id="editSupBill" parameterType="anisup.model.Sup">
+		Update sup
+		Set supbill = #{supbill}
+		WHERE supno = #{supno}
+	</update>
+
+	<update id="editSupBySupStat" parameterType="anisup.model.Sup">
+		Update sup
+		Set supstat = "거절"
+		WHERE supno = #{supno}
+	</update>
+</mapper>

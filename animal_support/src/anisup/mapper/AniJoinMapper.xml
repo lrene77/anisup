@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 파일의 경로를 config.xml에 명시해야 한다. -->
+
+<!-- Professor 테이블에 대한 CRUD 기능을 구현하기 위한 Mapper -->
+<mapper namespace="AniJoinMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="anijoin" type="anisup.model.AniJoin">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="mno" 	column="mno" />
+		<result property="anino" 	column="anino" />
+		<result property="anititle" 	column="anititle" />
+		<result property="anicont" 	column="anicont" />
+		<result property="anicount" 	column="anicount" />
+		<result property="anistat" 	column="anistat" />
+		<result property="wdate" 	column="wdate" />
+		<result property="name" 	column="name" />
+	</resultMap>
+
+	
+	<!-- 마이페이지 -->
+	<select id="mySelectAniList"
+		parameterType="anisup.model.AniJoin"
+	 	resultMap="anijoin">
+		<!-- 이 안에서 처리할 SQL문을 명시한다. -->
+		SELECT anino,anititle,wdate,anicount,anistat
+		FROM ani
+		order by anino desc;
+	</select>
+
+	<!-- 마이페이지 보호소 후원내역 조인 ani,member -->
+	<select id="mySheSupJoinList"
+		parameterType="anisup.model.AniJoin"
+	 	resultMap="anijoin">
+		<!-- 이 안에서 처리할 SQL문을 명시한다. -->
+		select ani.anino,ani.anititle, ani.wdate, member.name, ani.anicount, ani.anistat
+		from ani inner join member on ani.mno = member.mno
+		order by anino desc;
+	</select>	
+		
+	<!-- 마이페이지 페이지 번호 -->
+	<select id="selectAniCount"
+		parameterType="anisup.model.AniJoin"
+		resultType="int">
+		SELECT COUNT(anino) FROM ani
+	</select>
+	
+	<select id="selectAniList"
+		parameterType="anisup.model.AniJoin"
+	 	resultMap="anijoin">
+		<!-- 이 안에서 처리할 SQL문을 명시한다. -->
+<!-- 		SELECT *
+		FROM ani
+		ORDER BY anino DESC -->
+		select ani.anino,ani.anititle, ani.wdate, member.name, ani.anicount, ani.anistat
+		from ani inner join member on ani.mno = member.mno
+		order by anino desc		
+		LIMIT #{limitStart}, #{listCount}
+	</select>			
+</mapper>

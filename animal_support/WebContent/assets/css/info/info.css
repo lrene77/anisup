@@ -1,0 +1,46 @@
+.media{
+	width: 100%;
+	padding-top: 30px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+#media1{
+	padding-top: 70px;
+	border-right: 1px solid #ddd;
+}
+
+#media2{
+	border-left: 1px solid #ddd;
+	padding-bottom: 50px;
+}
+
+#media3{
+	padding-bottom: 50px;
+}
+
+.media-body{
+	font-size: 20px;
+}
+
+section #myTab li a {
+    font-size: large;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+#myTab{
+	margin-top: 70px;
+}
+
+@media(max-width: 991px){
+	.media-object{
+		display: none;
+	}
+	#media1{
+		padding-top: 30px;
+	}
+	#myTab {
+     margin-top: 30px; 
+	}
+}

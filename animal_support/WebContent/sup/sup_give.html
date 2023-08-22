@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>ANIMAL SUPPORT</title>
+
+		<!-- 모바일 웹 페이지 설정 -->
+		<link rel="shortcut icon" href="../assets/ico/favicon_1.ico" />
+		<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-144-precomposed.png" />
+
+		<!-- Javascript -->
+		<script src="../assets/js/jquery.min.js"></script>
+		<script src="../assets/js/bootstrap.min.js"></script>
+		<script src="../assets/js/common.js"></script>
+		<script src="../assets/js/thum_carousel.js"></script>
+
+		<!-- bootstrap -->
+		<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+
+		<!-- 나눔고딕 웹 폰트 적용 -->
+		<link rel="stylesheet" type="text/css" href="../assets/css/nanumfont.css" />
+
+
+		<!-- 반응형 웹을 지원하지 않을 경우 -->
+		<!-- <link rel="stylesheet" href="../assets/css/non-responsive.css" /> -->
+
+		<!-- IE8 이하 버전 지원 -->
+		<!--[if lt IE 9]>
+		<script type="text/javascript" src="../assets/js/html5shiv.js"></script>
+		<script type="text/javascript" src="../assets/js/respond.min.js"></script>
+		<![endif]-->
+
+		<!-- IE10 반응형 웹 버그 보완 -->
+		<!--[if gt IE 9]>
+		<link rel="stylesheet" type="text/css" href="../assets/css/ie10.css" />
+		<script type="text/javascript" src="../assets/js/ie10.js"></script>
+		<![endif]-->
+		
+		<!-- 공통 스타일 시트 -->
+		<link rel="stylesheet" type="text/css" href="../assets/css/common.css">
+		
+		<!-- sup_give.js -->
+		<script src="../assets/js/sup/sup_give.js"></script>
+
+		<!-- sup_give.css -->
+		<link rel="stylesheet" type="text/css" href="../assets/css/sup/sup_give.css">
+
+		<link rel="stylesheet" type="text/css" href="../assets/css/small.css" />
+
+		<link rel="stylesheet" type="text/css" href="../assets/css/btn.css">
+
+		
+
+		<!-- sweet alert -->
+		<!-- <link rel="stylesheet" href="../plugins/sweetalert/sweetalert.css" />
+		<script src="../plugins/sweetalert/sweetalert.min.js"></script> -->
+	</head>
+
+	<body>
+		<div class="container">
+			<!-- 상단 시작 -->
+			<header>
+				<p class="hidden-xs" id="logo"><a href="../index.html"><img src="../img/logo.png" alt="logo" /></a></p>
+				<!-- 메뉴바 시작-->
+				<nav class="navbar navbar-default" role="navigation">
+					<!-- 로고 -->
+					<div class="navbar-header">
+						<!-- 반응형 메뉴 구현 기능 시작 -->
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gnb">
+							<span class="sr-only">메뉴</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- 반응형 메뉴 구현 기능 끝 -->
+						<a class="navbar-brand" href="../index.html" id = "logotxt">ANIMAL SUPPORT</a>
+					</div>
+					<div class="collapse navbar-collapse" id="gnb">
+						<ul class="nav navbar-nav">
+							<!-- 드롭다운 시작 -->
+							<!-- <li id=blank></li> -->
+							<li class="dropdown">
+								<a href="#" class = "dropdown-toggle" id="top-menu" data-toggle = "dropdown">후 원</a>
+								<ul class="dropdown-menu">
+									<li><a href="../sup/sup.html">프로젝트 후원</a></li>
+									<li><a href="../sup/sup_rev.html">후원 후기</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class = "dropdown-toggle" id="top-menu" data-toggle = "dropdown">입 양</a>
+								<ul class="dropdown-menu">
+									<li><a href="../ani/ani_list.html">입양</a></li>
+									<li><a href="../ani/ani_rev.html">입양 후기</a></li>
+									<li><a href="../ani/map.html">보호소 지도</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class = "dropdown-toggle" id="top-menu" data-toggle = "dropdown">활 동</a>
+								<ul class="dropdown-menu">
+									<li><a href="../info/info/info.html">활동</a></li>
+									<li><a href="../info/info/noti.html">공지사항</a></li>
+									<li><a href="../info/info/qna.html">Q&amp;A</a></li>
+								</ul>
+							</li>
+							<li class="dropdown"><a href="../login/login.html">로 그 인</a></li>
+						</ul>
+					</div>
+					<!-- 메뉴 끝 -->
+				</nav>
+				<!-- 메뉴바 끝 -->
+			</header>
+			<!-- 상단 끝 -->
+
+			<!-- 중단 시작 -->
+			<br id="space">
+			<section>
+				<!-- 회원 분류modal 시작 -->
+				<div id="give-modal" class="modal fade" tabindex="-1" role="dialog" aria-lebelledby="join-modalLabel" aria-hidden="true">
+					<!-- modal dialog 시작 -->
+					<div class="modal-dialog">
+						<!-- modal content 시작 -->
+						<div class="modal-content">
+							<!-- 제목 시작 -->
+							<div class="modal-header">
+								<!-- 닫기버튼 -->
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4 class= "modal-title" id="give-modalLabel"><span class="glyphicon glyphicon-thumbs-up">&nbsp;후원해주셔서 감사합니다!</span></h4>
+							</div>
+							<!-- 제목 끝 -->
+								<!-- 내용영역 시작-->
+								<div>
+									<h5><strong>홍길동</strong>님 ANIMAL SUPPORT의 든든한 반려자가 되어주셔서 감사합니다.</h5>
+									<p id="give-content">
+										<strong>후원하신 프로젝트 : </strong> 프로젝트 글제목<br/>
+										<strong>후원하신 금액 : </strong> 금액<br/>
+										<strong>결제 방법 : </strong> 무통장 입금<br/>
+										<strong>예금주 : </strong> 후원한 금액<br/>
+										<strong>은행명 : </strong>선택한 은행<br/>
+										<strong>계좌번호 : </strong>입력한 계좌번호<br/>
+									</p>
+								</div>
+								<!-- 내용영역 끝 -->
+								<!-- 하단 시작 -->
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">확인</button>
+								</div>
+								<!-- 하단 끝 -->
+						</div>		
+						<!-- modal content 끝 -->
+					</div>
+					<!-- modal dialog 끝 -->
+				</div>
+				<!--회원 분류 modal 끝 -->
+				<h2>기부하기</h2>
+				<small>기부자 정보 기재하는 페이지 입니다.</small>
+				<small id="small2"><span class="glyphicon glyphicon-home"></span> &gt; 후원 &gt; 프로젝트 후원 &gt; 기부하기 </small>
+				<hr/>
+
+				<br/><br/>
+
+				<form class="form-horizontal" roloe="form" name="join" id="join" action="sup_give_ok.html">
+					<fieldset>
+						<div class="form-group">
+							<label for="she_mem_upd" class="col-md-3 control-label">후원 주제</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control"  name="she_mem_upd" placeholder="[프로젝트 명]" disabled>
+							</div>
+						</div>
+
+						<br/>
+
+						<div class="form-group">
+							<label for="she_mem_id" class="col-md-3 control-label">후원 금액</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" name="give_money" id="give_money" placeholder="10,000단위로 입력하세요" >
+							</div>
+						</div>
+
+						<br/>
+
+						<div class="form-group">
+							<label for="she_paw" class="col-md-3 control-label">결제방법</label>
+							<div class="col-md-6">
+								<input type="password" class="form-control" name="pay" placeholder="무통장입금" disabled>
+							</div>
+						</div>
+
+						<br/>
+						
+						<div class="form-group">
+							<label for="she_email" class="col-md-3 control-label">은행명</label>
+							<div class="col-md-6">
+								<select id="bank" name="bank" class="form-control">
+									<option>선택해주세요</option>
+									<option>국민은행</option>
+									<option>신한은행</option>
+									<option>농협은행</option>
+									<option>외한은행</option>
+									<option>IBK은행</option>
+								</select>
+							</div>
+						</div>
+
+						<br/>
+						
+						<div class="form-group">
+							<label for="she_email" class="col-md-3 control-label">예금주</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" id="give_name">
+							</div>	
+						</div>
+
+						<br/>
+						
+						<div class="form-group">
+								<label for="she_addr_info" class="col-md-3 control-label">계좌번호</label>
+								<div class="col-md-6">
+								<input type="text" class="form-control" id="juminnum" name="juminnum" placeholder="-를뺴고입력해주세요" >
+								</div>
+						</div>
+
+						<br/>							
+						<div id="btn-sec">
+<<<<<<< HEAD
+							<button class="btn btn-primary" id="cbtn" onclick="location.href='sup_ing.html'";>취소</button>
+							<a href="#give-modal" data-toggle="modal" class="btn btn-primary" id="obtn" type="submit">확인</a>
+=======
+							<button class="btn btn-primary" id="cbtn" onclick="location.href='sup_ing.html'">취소</button>
+							<button class="btn btn-primary" id="obtn" type="submit">확인</button>
+>>>>>>> 9bb7dc718585deaa3965951b3729ba52b3a42587
+						</div>
+						
+					</fieldset>
+				</form>
+			</section>
+			<!-- 중단 끝 -->
+
+			<footer>
+				<div><img src="../img/footer.png" alt="하단이미지"></div>
+				<address>
+					<br/>
+					단체명 : ANIMAL SUPPORT&nbsp;&#124;&nbsp; 전화번호 : 031-000-0000<br/>
+					주소 : 서울시 강남구 역삼동 815-4 만이빌딩 5F 그린컴퓨터아카데미<br/>
+					Copyright 2017 <a href="index.html">&copy;ANIMAL&nbsp;SUPPORT </a>All rights reserved.
+				</address>
+			</footer>
+		</div>	
+
+	</body>
+</html>

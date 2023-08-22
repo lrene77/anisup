@@ -1,0 +1,63 @@
+.box > div {
+	border: 1px solid #2D6CA2; 
+	background: #5BC0DE; 
+	padding: 3px 5px;
+}
+
+.pink { background: #f0f; height: 200px; }
+.green { background: #0f0; height: 80px; }
+.yellow { background: #ff0; height: 80px; }
+.blue { background: #00f; color: #fff; height: 120px; }
+
+.box > .space { height: 40px; background: #ff0; padding: 0; }
+.height { height: 5px; padding: 0; }
+
+/*글 상세보기 테이블*/
+table {
+    margin: auto;
+    max-width: 80%;
+    background-color: transparent;
+    border: 1px solid rgb(190, 190, 190);
+}
+
+/*답변 테이블*/
+#com_table1{
+    margin-bottom: 0;
+}
+#com_table2{
+    border: 0;
+    margin-top: 0;
+}
+
+/*답변 textarea, button*/
+#com{
+    padding: 0;
+    border: 0;
+}
+#content{
+    width: 100%;
+    height: 70px;
+    resize: none;
+}
+#comm_ok{
+    width: 100%;
+    height: 70px;
+}
+
+/*상세보기 테이블을 감싸는 div*/
+.comment{
+    width: 80%;
+    margin: auto;
+}
+@media(max-width: 768px){
+    .comment{
+        width: 100%;
+        margin: auto;
+    }
+    table {
+        margin: auto;
+        max-width: 100%;
+        background-color: transparent;
+        border-top: 1px solid rgb(190, 190, 190);
+    }
+}

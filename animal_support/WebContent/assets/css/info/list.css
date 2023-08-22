@@ -1,0 +1,50 @@
+span.btn{
+	font-size:13px;
+	padding:1px;
+}
+
+#ok{
+	text-decoration: none;
+	color:#000000;
+}
+
+/* 리스트(표형식) 속성 */
+th{
+	background-color: rgb(210, 230, 240);
+}
+
+tr:last-child{
+	border-bottom: 1px solid #ddd;
+}
+
+hr{
+	border-color: #ddd;
+}
+
+/* 반응형 웹 css 가로 768px 미만의 크기 (스마트폰)*/
+@media(max-width: 768px){
+	#space{
+		display: none;
+	}
+	td:nth-child(3){
+		display: none;
+	}
+	td:nth-child(4){
+		display: none;
+	}
+	td:last-child{
+		display: none;
+	}
+	th:nth-child(3){
+		display: none;
+	}
+	th:nth-child(4){
+		display: none;
+	}
+	th:last-child{
+		display: none;
+	}
+}
+#search{
+	color:#9acd32;
+}

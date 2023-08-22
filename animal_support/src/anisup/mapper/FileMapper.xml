@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="FileMapper">
+	<resultMap type="anisup.model.File" id="file">
+		<result property="id" column="id" />
+		<result property="origin_name" column="origin_name" />
+		<result property="file_dir" column="file_dir" />
+		<result property="file_name" column="file_name" />
+		<result property="content_type" column="content_type" />
+		<result property="file_size" column="file_size" />
+		<result property="reg_date" column="reg_date" />
+		<result property="edit_date" column="edit_date" />
+		<result property="listno" column="listno" />
+		<result property="supno" column="supno" />
+		<result property="anino" column="anino" />
+		<result property="imagePath" column="image_path" />
+	</resultMap>	
+	
+	<!-- 게시글에 속한 첨부파일의 정보를 저장한다. -->
+	<insert id="addFile" parameterType="anisup.model.File"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO file(
+			origin_name, file_dir, file_name, content_type,
+			file_size, reg_date, edit_date, listno 
+		) VALUES (
+			#{origin_name}, #{file_dir}, #{file_name}, #{content_type},
+			#{file_size}, now(), now(), #{listno}
+		)
+	</insert>
+	<!-- listboard 게시글에 속한 첨부파일의 정보를 저장한다. -->
+	<insert id="addListFile" parameterType="anisup.model.File"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO file(
+			origin_name, file_dir, file_name, content_type,
+			file_size, reg_date, edit_date, listno 
+		) VALUES (
+			#{origin_name}, #{file_dir}, #{file_name}, #{content_type},
+			#{file_size}, now(), now(), #{listno}
+		)
+	</insert>
+	
+	<!-- 하나의 listboard 게시물에 속한 파일목록을 조회 -->
+	<select id="selectListFileList" parameterType="anisup.model.File" resultMap="file">
+		SELECT id, origin_name, file_dir, file_name, content_type,
+			file_size, reg_date, edit_date, listno
+		FROM file
+		WHERE listno=#{listno}
+	</select>
+	
+	<!-- 하나의 파일을 조회 -->
+	<select id="selectFile" parameterType="anisup.model.File" resultMap="file">
+		SELECT file_dir, file_name FROM file WHERE id=#{id}
+	</select>
+	
+	<!-- 하나의 파일을 삭제  -->
+	<delete id="deleteFile" parameterType="anisup.model.File">
+		DELETE FROM file WHERE id=#{id}
+	</delete>
+	
+	<!-- 후원 게시글에 속한 첨부파일의 정보를 저장한다. -->
+	<insert id="addSupFile" parameterType="anisup.model.File"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO file(
+			origin_name, file_dir, file_name, content_type,
+			file_size, reg_date, edit_date, supno 
+		) VALUES (
+			#{origin_name}, #{file_dir}, #{file_name}, #{content_type},
+			#{file_size}, now(), now(), #{supno}
+		)
+	</insert>
+	
+	<!-- 하나의 후원 게시글에 속한 파일목록 조회  -->
+	<select id="selectListSupList" parameterType="anisup.model.File" resultMap="file">
+		<!--  SELECT origin_name, file_dir, file_name, content_type, file_size, reg_date, edit_date, supno  
+			,( SELECT concat(file_dir,'/',file_name) FROM file
+			   WHERE supno=#{supno}
+					 AND
+					 content_type LIKE ('image/%')
+			   ORDER BY supno ASC LIMIT 0, 1
+			) as image_path
+		FROM file
+		WHERE supno=#{supno}-->
+		SELECT concat(file_dir,'/',file_name) as image_path
+		FROM file
+		WHERE supno=#{supno} AND content_type LIKE ('image/%') 
+		<!--ORDER BY supno ASC LIMIT 0, 1-->
+	</select>
+		
+	<!-- 입양 게시글에 속한 첨부파일의 정보를 저장한다. -->
+	<insert id="addAniFile" parameterType="anisup.model.File"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO file(
+			origin_name, file_dir, file_name, content_type,
+			file_size, reg_date, edit_date, anino 
+		) VALUES (
+			#{origin_name}, #{file_dir}, #{file_name}, #{content_type},
+			#{file_size}, now(), now(), #{anino}
+		)
+	</insert>
+	
+	<select id="selectAniList" parameterType="anisup.model.File" resultMap="file">
+		SELECT *
+		FROM file
+	</select>
+	
+	<!-- listboard에 속한 파일 전체 삭제 -->
+	<delete id="deleteListFileAll" parameterType="anisup.model.File">
+		DELETE FROM file WHERE listno=#{listno}
+	</delete>
+</mapper>

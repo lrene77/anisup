@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 XML의 구조대로 구현될 클래스의 이름 -->
+<mapper namespace="SupMemberMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="supmember" type="anisup.model.SupMember">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="mno" column="mno" />
+		<result property="supno" 	column="supno" />
+		<result property="suptitle" column="suptitle" />
+		<result property="supcont" 	column="supcont" />
+		<result property="supstart"	column="supstart" />
+		<result property="supend" column="supend" />
+		<result property="supprice" column="supprice" />
+		<result property="supnow" column="supnow" />
+		<result property="supstat" column="supstat" />
+		<result property="suping" column="suping" />
+		<result property="supbill" column="supbill" />
+		<result property="supacname" column="supacname" />
+		<result property="supbank" column="supbank" />
+		<result property="supacc" column="supacc" />
+		<result property="wdate" column="wdate" />
+		<result property="imagePath" column="image_path" />
+		<result property="supDays" column="supDays" />
+		<result property="mtype" column="mtype" />
+	</resultMap>
+
+	<!-- 후원 관리자 다중행 조회하기 -->
+	<select id="selectAdminSupList" parameterType="anisup.model.SupMember" resultMap="supmember">
+		SELECT sup.mno as mno, supno, suptitle, supcont, DATE_FORMAT(supstart, '%Y-%m-%d') AS supstart, DATE_FORMAT(supend, '%Y-%m-%d') AS supend, 
+				supprice, supnow, supstat, suping, supbill, supacname, supbank, supacc, DATE_FORMAT(wdate, '%Y-%m-%d') AS wdate, supDays, image_path, mtype
+		FROM sup, member 
+		<where>
+			sup.mno=member.mno
+			<if test="supstat != null">
+				AND supstat=#{supstat}
+			</if>	
+			<if test="supstart != null">
+				AND supstart &gt;= #{supstart}
+			</if>
+			<if test="supend != null">
+				AND supend &lt;= #{supend}
+			</if>		
+		</where>
+		ORDER BY supno DESC
+		LIMIT #{limitStart}, #{listCount}	
+	</select>
+	
+	<!-- 전체 게시물 수를 조회한다 -->
+	<select id="selectSupMemberCount" parameterType="anisup.model.SupMember" resultType="int">
+		SELECT COUNT(supno) 
+		FROM sup, member
+		<where>
+			sup.mno=member.mno
+			<if test="supstat != null">
+				AND supstat=#{supstat}
+			</if>
+			<if test="supstart != null">
+				AND supstart &gt;= #{supstart}
+			</if>
+			<if test="supend != null">
+				AND supend &lt;= #{supend}
+			</if>	
+		</where>
+	</select>
+		
+	<!-- 후원 대기글 승인 또는 거절 시 supstat 업데이트한다 -->
+	<update id="updateSupMember" parameterType="anisup.model.SupMember">
+		UPDATE sup SET
+			supstat="진행"
+		WHERE supno=#{supno}
+	</update>
+	
+	
+</mapper>

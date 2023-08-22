@@ -1,0 +1,44 @@
+span.btn{
+	font-size:13px;
+	padding:1px;
+}
+
+#ok{
+	text-decoration: none;
+	color:#000000;
+}
+
+hr{
+	border: 1.5px solid rgb(190, 190, 190);
+}
+
+table {
+	margin: auto;
+  	/* width: 80%; */
+  	background-color: transparent;
+  	border-top: 1px solid rgb(190, 190, 190);
+}
+td{
+	border: 1px solid rgb(190, 190, 190);
+}
+#noti_com{
+	padding: 0;
+	border: 0;
+}
+#com_content{
+	width: 100%;
+	height: 500px;
+}
+#com_ok{
+	width: 100%;
+	height: 50px;
+}
+
+.comment, #m_list{
+	width: 80%;
+	margin: auto;
+}
+
+#m_btn{
+	width: 50px;
+}

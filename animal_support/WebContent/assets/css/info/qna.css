@@ -1,0 +1,25 @@
+hr{
+	border: 1.5px solid rgb(190, 190, 190);
+}
+
+h2{
+	letter-spacing: 0.5em;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+small{
+	margin-left: 10px;
+}
+
+/*#wbtn{
+	line-height: 15px;
+	width: 100px;
+	height: 35px;
+	background-color: #2457BD;
+    color: white;
+}
+
+#wbtn:hover{
+	background-color: #00f;
+}*/

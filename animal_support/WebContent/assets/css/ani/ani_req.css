@@ -1,0 +1,50 @@
+.btn{
+	margin-bottom: 30px;
+}
+/* 제목 가운데 */
+h1{
+	margin-top: 5px;
+	text-align: center;
+}
+/* 상단 설명 칸 맞추기 */
+section{
+	margin: auto;
+}
+/* 내부 여백 제거 */
+.row{
+	margin-left: 15px;
+	margin-right: 15px;
+}
+/* 글과 작성칸 같은라인 */
+.form-control{
+	width: 80%;
+	display: inline-block;
+}
+/* 글과 작성칸 여백 */
+label{
+	margin-right: 20px;
+}
+hr{
+	border: 1.5px solid rgb(190, 190, 190);
+}
+/* 해상도 별 넓이 */
+@media(min-width: 1200px){
+	section {
+		width: 55%
+	}
+}
+@media(min-width: 992px) and (max-width: 1199px){
+	section {
+		width: 65%
+	}
+}
+@media(max-width: 767px){
+	.row{
+	margin-left: 0;
+	margin-right: 0;
+	}
+}
+/* 내용 색 조정 */
+.jumbotron {
+	background-color: #fff;
+}

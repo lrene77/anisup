@@ -1,0 +1,47 @@
+small{
+	display: inline-block;
+}
+
+#small1{
+	width: 20%;
+}
+
+#small2{
+	width: 70%; 
+	text-align: right; 
+	font-weight: bold;
+}
+
+@media(min-width: 992px) and (max-width: 1199px){
+	#small1{
+		width: 25%;
+	}	
+
+	#small2{
+		width: 65%; 
+		text-align: right; 
+		font-weight: bold;
+	}
+}
+
+@media(min-width: 768px) and (max-width: 991px){
+	#small1{
+		width: 30%
+	}
+	
+	#small2{
+		width: 60%;
+		text-align: right;
+		font-weight: bold;
+	}
+}
+
+@media(max-width: 768px){
+	#small1{
+		width: 100%
+	}
+	
+	#small2{
+		display: none;
+	}
+}

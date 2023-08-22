@@ -1,0 +1,53 @@
+#text {
+	height: 500px;
+}
+
+#my_info {
+	height: 300px;
+}
+
+#btn {
+	width: 100px;
+	height: 35px;
+	margin-top: 10px;
+	background-color: #740000;
+	border: none;
+	line-height: 20px;
+}
+
+#btn:hover {
+	background-color: #900000;
+}
+
+.box4 {
+	margin-left: 120px;
+}
+
+.table>tbody>tr>td {
+	padding: 13px;
+}
+
+#drop {
+	margin-left: -30px;
+	margin-top: 1px;
+}
+
+#btn-sec {
+	margin-left: -60px;
+}
+
+#cbtn {
+	margin-top: 20px;
+}
+
+#btn-sec {
+	margin-left: -60px;
+}
+
+#my_info {
+	height: 300px;
+}
+
+#lbtn {
+	margin-right: -10px;
+}

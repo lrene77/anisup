@@ -1,0 +1,48 @@
+.table th:first-child{
+		width: 5%;
+}
+
+.table th:nth-child(2){
+		width: 10%;
+}
+
+.table th:nth-child(3){
+		width: 45%;
+}
+
+.table th:nth-child(4){
+		width: 15%;
+}
+
+.table th:nth-child(5){
+		width: 10%;
+}
+
+.table th:last-child{
+		width: 15%;
+}
+
+/* 테이블 안의 a태그 텍스트 속성 제거 */
+.table a{
+	text-decoration: none !important;
+	color: black;
+}
+.table a:hover{
+	text-decoration: none !important;
+	color: black;
+}
+
+/* 입양 시작일 종료일 기간 입력 텍스트 시작 */
+.form-control[readonly] {
+    background-color: #fff;
+    cursor: default;
+}
+
+#sc1, #sbtn, #sc2 {
+	display: inline;
+}
+/* 입양 시작일 종료일 기간 입력 텍스트 끝 */
+#sc1, #sc2{
+	width: 20%;
+	height: 30px;
+}

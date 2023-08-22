@@ -1,0 +1,61 @@
+#cbtn, #obtn, #lbtn, #wbtn, #ubtn{
+	width: 100px;
+	height: 35px;
+}
+
+#lbtn{
+	/*background-color: #577889;*/
+    /*line-height: 20px;*/
+    margin-bottom: 20px;
+}
+
+#wbtn, #ubtn{
+	line-height: 15px;
+	background-color: #2457BD;
+    color: white;
+}
+
+#wbtn:hover, #ubtn:hover{
+	background-color: #00f;
+}
+
+#cbtn, #obtn{
+    /*line-height: 20px;*/
+    margin-bottom: 20px;
+}
+
+#cbtn{
+    background-color: #740000;
+    border: 0;
+}
+
+#cbtn:hover{
+    background-color: #900000;}
+
+#btn-sec{
+	width: 80%;
+	margin: auto;
+	text-align: right;
+	margin-bottom: 20px;
+}
+
+@media(max-width: 768px){
+	#btn-sec{
+		width: 100%;
+		margin: auto;
+		text-align: right;
+		margin-bottom: 20px;
+	}
+}
+
+/*댓글 수정 삭제 버튼*/
+
+.glyphicon-remove:hover {
+    content: "\e014";
+    color: #740000
+}
+
+.glyphicon-edit:hover {
+    content: "\e065";
+    color: #005E75;
+}

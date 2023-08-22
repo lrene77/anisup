@@ -1,0 +1,17 @@
+/* 리스트 영역 조정 */
+.navbar {
+	  position: relative;
+	  min-height: 50px;
+	  margin-bottom: 0;
+	  border: none;
+	  border-bottom: 2px solid #000;
+	}
+.caption p{
+	text-align: right;
+	margin-top: 8px;
+}
+
+/* 지도 크기조정 */
+#map{
+	border: 1px solid #000; min-height: 700px;
+}

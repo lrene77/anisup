@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CommentMapper">
+	<resultMap type="anisup.model.Comment" id="comment">
+		<result property="id" column="id" />
+		<result property="writerName" column="writer_name" />
+		<result property="content" column="content" />
+		<result property="regDate" column="reg_date" />
+		<result property="editDate" column="edit_date" />
+		<result property="ipAddress" column="ip_address" />
+		<result property="supno" column="supno" />
+		<result property="listno" column="listno" />
+		<result property="anino" column="anino" />
+		<result property="mno" column="mno" />
+	</resultMap>
+	
+	<!-- listboard 덧글 정보 저장 -->
+	<insert id="addListComment" parameterType="anisup.model.Comment" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO comment(
+			writer_name, content, reg_date, edit_date, ip_address, listno, mno
+		) VALUES (
+			#{writerName}, #{content}, now(), now(), #{ipAddress}, #{listno},
+			
+			<choose>
+				<when test="mno == 0">
+					null
+				</when>
+				<otherwise>
+					#{mno}
+				</otherwise>
+			</choose>
+		)
+	</insert>
+	
+	<!-- listboard 덧글 하나에 대한 정보를 조회 -->
+	<select id="selectListComment" parameterType="anisup.model.Comment" resultMap="comment">
+		SELECT id, writer_name, content, DATE_FORMAT(reg_date, '%Y-%m-%d %H:%i:%s') as reg_date,
+			DATE_FORMAT(edit_date, '%Y-%m-%d %H:%i:%s') as edit_date,
+			ip_address, listno, mno
+		FROM comment
+		WHERE id=#{id}
+	</select>
+	
+	<!-- listboar 하나의 게시물에 속한 모든 덧글 목록을 조회 -->
+	<select id="selectListCommentList" parameterType="anisup.model.Comment" resultMap="comment">
+		SELECT id, writer_name, content, DATE_FORMAT(reg_date, '%Y-%m-%d %H:%i:%s') as reg_date,
+			DATE_FORMAT(edit_date, '%Y-%m-%d %H:%i:%s') as edit_date,
+			ip_address, listno, mno
+		FROM comment
+		WHERE listno=#{listno}
+		ORDER BY id ASC
+	</select>
+	
+	<!-- 자신의 덧글인지 검사한다. -->
+	<select id="selectCommentCountByMemberId" parameterType="anisup.model.Comment" resultType="int">
+		SELECT COUNT(id) FROM comment
+		WHERE id=#{id} AND mno=#{mno}
+	</select>
+	
+	<!-- 덧글 삭제 -->
+	<delete id="deleteComment" parameterType="anisup.model.Comment">
+		DELETE FROM comment WHERE id=#{id}
+	</delete>
+	
+	<!-- 덧글 수정 -->
+	<update id="updateComment" parameterType="anisup.model.Comment">
+		UPDATE comment SET
+			content=#{content},
+			ip_address=#{ipAddress},
+			edit_date=now()
+		WHERE id=#{id}
+	</update>
+	
+	<!-- listboard 특정 게시물에 속한 모든 덧글을 삭제한다. -->
+	<delete id="deleteListCommentAll" parameterType="anisup.model.Comment">
+		DELETE FROM comment WHERE listno=#{listno}
+	</delete>
+</mapper>

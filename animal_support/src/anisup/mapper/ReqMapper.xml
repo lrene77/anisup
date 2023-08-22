@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 XML의 구조대로 구현될 클래스의 이름 => Impl클래스를 대체한다. -->
+<mapper namespace="ReqMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="req" type="anisup.model.Req">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+	<!-- 	<result property="anino" column="anino" /> -->
+		<result property="mno" column="mno" />
+		<result property="reqno" column="reqno" />
+		<result property="reqtitle" column="reqtitle" />
+		<result property="reqjob" column="reqjob" />
+		<result property="reqcont" column="reqcont" />
+		<result property="isreq" column="isreq" />
+		<result property="reqdate" column="reqdate" />
+		<result property="confirmdate" column="confirmdate" />
+	</resultMap>
+
+	<!--
+		데이터 저장을 위한 기능 정의
+		<insert id="메서드이름" parameterType="파라미터의 데이터 타입" useGeneratedKeys="자동증가 일련번호값 리턴 여부" keyProperty="자동증가 일련번호 컬럼명">
+	-->
+	<insert id="addReq" parameterType="anisup.model.Req" useGeneratedKeys="true"
+		keyProperty="reqno">
+		<!-- "#{변수명}" 으로 표시된 곳에 Beans의 멤버변수가 치환된다. -->
+		INSERT INTO req (mno, anino, reqtitle, reqjob, reqcont, isreq, reqdate)
+		 VALUES (#{mno}, #{anino}, #{reqtitle},#{reqjob}, #{reqcont}, #{isreq}, now());
+	</insert>
+
+	<!-- 
+		데이터 삭제를 위한 기능 정의
+		<delete id="메서드이름" parameterType="파라미터의 데이터 타입">
+	-->
+	<delete id="removeReq" parameterType="anisup.model.Req">
+		<!-- "#{변수명}" 으로 표시된 곳에 파라미터가 치환된다. -->
+		DELETE FROM req WHERE reqno=#{reqno};
+	</delete>
+
+	<!--
+		데이터 갱신을 위한 기능 정의
+		<update id="메서드이름" parameterType="파라미터의 데이터 타입">
+	-->
+	<update id="editReq" parameterType="anisup.model.Req">
+		<!-- "#{변수명}" 으로 표시된 곳에 Beans의 멤버변수가 치환된다. -->
+		UPDATE req SET anino=#{anino}, reqtitle=#{reqtitle} , reqjob=#{reqjob} , reqcont=#{reqcont} , reqid=#{reqid},
+		isreq=#{isreq} , reqdate=#{reqdate}, confirmdate=#{confirmdate}
+		 WHERE reqno=#{reqno};
+	</update>
+
+	<!--
+		단일행 조회를 위한 기능 정의
+		<select id="메서드이름" parameterType="파라미터의 데이터 타입" resultMap="리턴될 Beans이름">
+	-->
+	<select id="selectRegItem" parameterType="anisup.model.Req" resultMap="req">
+		<!-- "#{변수명}" 으로 표시된 곳에 파라미터가 치환된다. -->
+		SELECT anino, reqno, reqtitle, reqjob, reqcont, reqcont, reqid, isreq, reqdate, confirmdate FROM req WHERE reqno=#{reqno};
+	</select>
+
+	<!--
+		다중행 조회를 위한 기능 정의
+		<select id="메서드이름" resultMap="리턴될 Beans이름"> 
+	-->
+	
+	<select id="selectReqList" resultMap="req">
+		<!-- 이 안에서 처리할 SQL문을 명시한다. -->
+		SELECT *
+		FROM req, member
+		WHERE req.mno = member.mno and req.anino = (select anino from ani where anino = #{anino});
+	</select>
+	
+	<select id="selectReqRead" resultMap="req">
+		SELECT *
+		FROM req
+		WHERE mno=#{mno} and anino=#{anino}
+	</select>
+</mapper>

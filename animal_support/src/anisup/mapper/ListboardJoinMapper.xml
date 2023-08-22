@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<!-- 이 파일의 경로를 config.xml에 명시해야 한다. -->
+    
+<!-- xml의 CRUD 기능을 구현하기 위한 Mapper -->
+<mapper namespace="ListboardJoinMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="listboard_member" type="anisup.model.ListboardMember">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="mno" column="mno" />
+		<result property="listno" column="listno" />
+		<result property="listcate" column="listcate" />
+		<result property="listtitle" column="listtitle" />
+		<result property="listcont" column="listcont" />
+		<result property="wdate" column="wdate" />
+		<result property="hit" column="hit" />
+		<result property="ipAddress" column="ip_address" />
+		<result property="id" column="id" />
+	</resultMap>
+	
+	<!-- listboard + member 테이블을 조인하여 목록조회 -->
+	<select id="selectListboardJoinItem" parameterType="anisup.model.ListboardMember"
+	resultMap="listboard_member">
+		SELECT listno, listcate, listtitle, listcont, DATE_FORMAT(wdate, '%Y-%m-%d') AS wdate, hit, listboard.mno as mno, member.id as id
+		FROM listboard INNER JOIN member ON listboard.mno=member.mno
+		WHERE listcate=#{listcate} AND listno=#{listno}
+	</select>
+	
+	<!-- 전체 게시물 수를 조회한다. -->
+	<select id="selectListboardJoinCount" parameterType="anisup.model.ListboardMember" resultType="int">
+		SELECT COUNT(listno) FROM listboard
+		<where>
+			listcate=#{listcate}
+				<if test="listtitle != null or listcont != null">
+					AND (
+						<if test="listtitle != null">
+							listtitle LIKE concat('%', #{listtitle}, '%')
+						</if>
+						<if test="listcont != null">
+							OR listcont LIKE concat('%', #{listcont}, '%')
+						</if>
+					)
+				</if>
+		</where>
+	</select>
+	
+	<!-- 관리자 후기 전체 게시물 수를 조회한다. -->
+	<select id="selectListboardJoinCount2" parameterType="anisup.model.ListboardMember" resultType="int">
+		SELECT COUNT(listno) FROM listboard
+		<where>
+			listcate='a' OR listcate='s'
+				<if test="listtitle != null">
+					AND (
+							listtitle LIKE concat('%', #{listtitle}, '%')
+					)
+				</if>
+		</where>
+	</select>
+	
+	<!-- 관리자 공지 전체 게시물 수를 조회한다. -->
+	<select id="selectListboardJoinCount3" parameterType="anisup.model.ListboardMember" resultType="int">
+		SELECT COUNT(listno) FROM listboard
+		WHERE listcate='n'
+	</select>
+	
+	<!-- 관리자 질문답변 전체 게시물 수를 조회한다. -->
+	<select id="selectListboardJoinCount4" parameterType="anisup.model.ListboardMember" resultType="int">
+		SELECT COUNT(listno) FROM listboard
+		WHERE listcate='q'
+	</select>
+	
+	<!-- listboard + member 테이블을 조인하여 다중행 조회 -->
+	<select id="selectListboardJoinList" parameterType="anisup.model.ListboardMember"
+	resultMap="listboard_member">
+		SELECT listno, listcate, listtitle, listcont, DATE_FORMAT(wdate, '%Y-%m-%d') AS wdate, hit, listboard.mno as mno, member.id as id
+		FROM listboard INNER JOIN member ON listboard.mno=member.mno
+		
+		<where>
+			listcate=#{listcate}
+				<if test="listtitle != null or listcont != null">
+					AND (
+						<if test="listtitle != null">
+							listtitle LIKE concat('%', #{listtitle}, '%')
+						</if>
+						<if test="listcont != null">
+							OR listcont LIKE concat('%', #{listcont}, '%')
+						</if>
+					)
+				</if>
+		</where>
+		
+		ORDER  BY listno DESC
+		LIMIT #{limitStart}, #{listCount}
+	</select>
+	
+	<!-- admin rev 테이블을 조인하여 다중행 조회 -->
+	<select id="selectListboardJoinList2" parameterType="anisup.model.ListboardMember" resultMap="listboard_member">
+		SELECT listno, listcate, listtitle, listcont, DATE_FORMAT(wdate, '%Y-%m-%d') AS wdate, hit, listboard.mno as mno, member.id as id
+		FROM listboard INNER JOIN member ON listboard.mno=member.mno
+		
+		<where>
+			(listcate='a' OR listcate='s')
+				<if test="listtitle != null">
+					AND (
+							listtitle LIKE concat('%', #{listtitle}, '%')
+					)
+				</if>
+				<if test="wdate1 != null">
+					<if test="wdate2 == null">
+						AND(
+							wdate BETWEEN #{wdate1} AND now()
+						)
+					</if>
+					<if test="wdate2 != null">
+						AND (
+							wdate BETWEEN #{wdate1} AND #{wdate2}
+						)
+					</if>
+				</if>
+				<if test="wdate == null">
+					<if test="wdate2 != null">
+						AND (
+							wdate BETWEEN '1000-01-01' AND #{wdate2}
+						)
+					</if>
+				</if>
+				<if test="listcate != null">
+					<if test="listcate == 'sup'">
+						AND (
+							listcate='s'
+						)
+					</if>
+					<if test="listcate == 'ani'">
+						AND (
+							listcate='a'
+						)
+					</if>
+				</if>
+		</where>
+		
+		ORDER  BY listno DESC
+		LIMIT #{limitStart}, #{listCount}
+	</select>
+	
+	<!-- admin noti 다중행 조회 카테고리 -->
+	<select id="selectListboardJoinList3" parameterType="anisup.model.ListboardMember" resultMap="listboard_member">
+		SELECT listno, listcate, listtitle, listcont, DATE_FORMAT(wdate, '%Y-%m-%d') AS wdate, hit
+		FROM listboard
+		<where>
+			(listcate='n')
+				<if test="listtitle != null">
+					AND (
+							listtitle LIKE concat('%', #{listtitle}, '%')
+					)
+				</if>
+				<if test="wdate1 != null">
+					<if test="wdate2 == null">
+						AND(
+							wdate BETWEEN #{wdate1} AND now()
+						)
+					</if>
+					<if test="wdate2 != null">
+						AND (
+							wdate BETWEEN #{wdate1} AND #{wdate2}
+						)
+					</if>
+				</if>
+				<if test="wdate == null">
+					<if test="wdate2 != null">
+						AND (
+							wdate BETWEEN '1000-01-01' AND #{wdate2}
+						)
+					</if>
+				</if>
+		</where>
+		ORDER BY listno DESC
+	</select>
+	
+	<!-- admin qna 다중행 조회 카테고리 -->
+	<select id="selectListboardJoinList4" parameterType="anisup.model.ListboardMember" resultMap="listboard_member">
+		SELECT listno, listcate, listtitle, listcont, DATE_FORMAT(wdate, '%Y-%m-%d') AS wdate, hit
+		FROM listboard
+		<where>
+			(listcate='q')
+				<if test="listtitle != null">
+					AND (
+							listtitle LIKE concat('%', #{listtitle}, '%')
+					)
+				</if>
+				<if test="wdate1 != null">
+					<if test="wdate2 == null">
+						AND(
+							wdate BETWEEN #{wdate1} AND now()
+						)
+					</if>
+					<if test="wdate2 != null">
+						AND (
+							wdate BETWEEN #{wdate1} AND #{wdate2}
+						)
+					</if>
+				</if>
+				<if test="wdate == null">
+					<if test="wdate2 != null">
+						AND (
+							wdate BETWEEN '1000-01-01' AND #{wdate2}
+						)
+					</if>
+				</if>
+				
+		</where>
+		ORDER BY listno DESC
+	</select>
+	
+	<!-- 조회수 1 증가 -->
+	<update id="updateListboardHit" parameterType="anisup.model.ListboardMember">
+		UPDATE listboard SET hit=hit+1 WHERE listcate=#{listcate} AND listno=#{listno}
+	</update>
+	
+	<!-- 자신의 게시물인지 검사한다. -->
+	<select id="selectListboardCountByMno" parameterType="anisup.model.ListboardMember" resultType="int">
+		SELECT COUNT(listno) FROM listboard
+		WHERE listcate=#{listcate} AND listno=#{listno} AND mno=#{mno}
+	</select>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteListboard" parameterType="anisup.model.ListboardMember">
+		DELETE FROM listboard WHERE listno=#{listno}
+	</delete>
+</mapper>

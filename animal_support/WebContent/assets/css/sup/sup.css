@@ -1,0 +1,129 @@
+/*후원 style*/
+
+#btn_write {
+	background-color: #2457BD;
+    color: white;
+}
+
+#badge_ing {
+	background-color: orange;
+	position: absolute;
+	top: 15px;
+	right:  30px;
+}
+
+#badge_end {
+	background-color: rgb(231, 76, 60);
+	position: absolute;
+	top: 15px;
+	right:  30px;
+}
+
+img {
+	width: 100%;
+}
+
+div.col-sm-6 img {
+	height: 200px;
+}
+
+span.badge {
+	padding: 5px 11px; 
+}
+
+.col-xs-12 {
+	max-width: 345px;
+}
+
+@media(max-width: 767px){
+	.col-xs-12{
+		float: none;
+	}
+}
+
+@media(min-width: 768px) and (max-width: 978px){
+	.col-sm-6{
+		margin: 15px;
+	}
+}
+
+@media(min-width: 979px) and (max-width: 1199px){
+	div#title{
+		height: 50px;
+	}
+	.progress{
+		margin-bottom: 0px;
+	}
+	.caption{
+		padding: 0px;
+	}
+}
+
+@media(min-width: 1200px){
+	.thumbnail img{
+		min-height: 200px;
+	}
+}
+
+a#thumb_a {
+	text-decoration: none; 
+	color: black;
+}
+
+.progress {
+	margin-bottom: 0px;
+	border-radius: 10px;
+}
+
+ul > li {	
+	color: #333;
+}
+
+.thumbnail:hover, .thumbnail:focus {
+	background-color: #eee;
+}
+/*
+.thumbnail{
+	height: 350px;
+}*/
+
+#title{
+	min-height: 40px;
+}
+
+.list-inline>li {
+    display: inline-block;
+    padding-left: 70px;
+    padding-right: 5px;
+}
+
+hr{
+	border: 1.5px solid rgb(190, 190, 190);
+}
+
+h2{
+	letter-spacing: 0.5em;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+small{
+	margin-left: 10px;
+}
+
+.btn-default{
+	width: 100px;
+	height: 30px;
+}
+
+#btn_write {
+	line-height: 15px;
+	width: 100px;
+	height: 35px;
+	background-color: #2457BD;	
+    color: white;
+}
+
+#btn_write:hover {
+	background-color: #428bca;	
+}

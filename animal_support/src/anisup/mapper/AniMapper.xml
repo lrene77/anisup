@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 파일의 경로를 config.xml에 명시해야 한다. -->
+
+<!-- Professor 테이블에 대한 CRUD 기능을 구현하기 위한 Mapper -->
+<mapper namespace="AniMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="ani" type="anisup.model.Ani">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="mno" 	column="mno" />
+		<result property="anino" 	column="anino" />
+		<result property="anititle" 	column="anititle" />
+		<result property="file" column="file" />
+		<result property="aniname" 		column="aniname" />
+		<result property="anigender" column="anigender" />
+		<result property="aniage" 	column="aniage" />
+		<result property="anicont" 	column="anicont" />
+		<result property="anicount" 	column="anicount" />
+		<result property="anistat" 	column="anistat" />
+		<result property="wdate" 	column="wdate" />
+	</resultMap>
+	
+	<insert id="addAni" 
+		parameterType="anisup.model.Ani"
+		useGeneratedKeys="true"
+		keyProperty="anino">
+		INSERT INTO ani(mno, anititle, file, aniname, anigender, aniage, anicont, anicount, anistat, wdate)
+		VALUES(#{mno}, #{anititle}, #{file}, #{aniname}, #{anigender}, #{aniage}, #{anicont}, #{anicount}, #{anistat}, now());
+	</insert>
+	
+	<update id="editAniCount"
+		parameterType="anisup.model.Ani">
+		UPDATE ani
+		SET anicount = anicount+1
+		WHERE anino = #{anino};
+	</update>
+	
+	<update id="editAniStat"
+		parameterType="anisup.model.Ani">
+		UPDATE ani
+		SET anistat = #{anistat}
+		WHERE anino = #{anino};
+	</update>
+	
+	<delete id="removeAni"
+		parameterType="anisup.model.Ani">
+		DELETE FROM ani
+		WHERE anino = #{anino}; 
+	</delete>
+	
+	<!--
+		다중행 조회(목록조회)를 위한 기능 정의
+		<select id="메서드이름"
+			parameterType="파라미터로 전달될 객체의 클래스 타입"
+			resultMap="리턴될 Beans의 id">
+	-->
+	<select id="selectAniList"
+		parameterType="anisup.model.Ani"
+	 	resultMap="ani">
+		<!-- 이 안에서 처리할 SQL문을 명시한다. -->
+		SELECT mno, anino, anititle, aniname, anigender, aniage, anicont, anicount, anistat, wdate
+		,( SELECT concat(file_dir,'/',file_name) FROM file
+			   WHERE file.anino=ani.anino
+					 AND
+					 content_type LIKE ('image/%')
+			   ORDER BY id ASC LIMIT 0, 1
+			) as file
+		FROM ani
+		ORDER BY anino DESC
+		LIMIT #{limitStart}, #{listCount}
+	</select>
+	
+	<!--
+		단일행 조회(상세보기)를 위한 기능 정의
+		<select id="메서드이름" 
+			parameterType="파라미터의 데이터 타입" 
+			resultMap="리턴될 Beans의 id">
+	-->
+	<select id="selectAniRead"
+		parameterType="anisup.model.Ani"
+		resultMap="ani">
+		<!-- "#{변수명}" 으로 표시된 곳에 파라미터로 전달된
+			 Beans의 멤버변수값이 치환된다. -->
+		SELECT *
+		FROM ani, member
+		WHERE ani.mno=member.mno and ani.anino=#{anino}
+	</select>
+	
+	<select id="selectAniCount"
+		parameterType="anisup.model.Ani"
+		resultType="int">
+		SELECT COUNT(anino) FROM ani
+	</select>
+	
+		<!--
+		다중행 조회(목록조회)를 위한 기능 정의
+		<select id="메서드이름"
+			parameterType="파라미터로 전달될 객체의 클래스 타입"
+			resultMap="리턴될 Beans의 id">
+	-->
+	<select id="selectAniListJoinMember"
+		parameterType="anisup.model.Ani"
+	 	resultMap="ani">
+		<!-- 이 안에서 처리할 SQL문을 명시한다. -->
+		SELECT id, anino, anititle, aniname, anigender, aniage, anicont, anicount, anistat, wdate
+		,( SELECT concat(file_dir,'/',file_name) FROM file
+			   WHERE file.anino=ani.anino
+					 AND
+					 content_type LIKE ('image/%')
+			   ORDER BY id ASC LIMIT 0, 1
+			) as file
+		FROM ani
+		INNER JOIN member
+		ON ani.mno = member.mno
+		ORDER BY anino DESC
+		LIMIT #{limitStart}, #{listCount}
+	</select>
+	
+	<select id="selectAniSearch"
+		parameterType="anisup.model.Ani"
+	 	resultMap="ani">
+		<!-- 이 안에서 처리할 SQL문을 명시한다. -->
+		SELECT id, anino, anititle, aniname, anigender, aniage, anicont, anicount, anistat, wdate
+		,( SELECT concat(file_dir,'/',file_name) FROM file
+			   WHERE file.anino=ani.anino
+					 AND
+					 content_type LIKE ('image/%')
+			   ORDER BY id ASC LIMIT 0, 1
+			) as file
+		FROM ani, member
+		
+		<where>
+			ani.mno = member.mno
+			
+			<if test="anititle != null or id != null">
+				AND (
+					<if test="anititle != null">
+						anititle LIKE concat('%', #{anititle}, '%')
+					</if>
+					
+					<if test="anititle != null and id != null">
+						OR
+					</if>
+					
+					<if test="id != null">
+						id LIKE concat('%', #{id}, '%')
+					</if>
+				)
+			</if>
+			
+			<if test="wdate != null">
+				<if test="wdate2 == null">
+					AND (
+						wdate BETWEEN #{wdate} and now()
+					)
+				</if>
+				<if test="wdate2 != null">
+					AND (
+						wdate BETWEEN #{wdate} and #{wdate2}
+					)
+				</if>
+			</if>
+			<if test="wdate == null">
+				<if test="wdate2 != null">
+					AND (
+						wdate BETWEEN '1000-01-01' and #{wdate2}
+					)
+					
+				</if>
+			</if>
+			
+			<if test="anistat != null">
+				AND (
+					anistat LIKE #{anistat}
+				)
+			</if>
+		</where>
+		
+		ORDER BY anino DESC
+		LIMIT #{limitStart}, #{listCount}
+	</select>
+</mapper>

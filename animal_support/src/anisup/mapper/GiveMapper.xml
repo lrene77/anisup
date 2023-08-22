@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 XML의 구조대로 구현될 클래스의 이름 => Impl클래스를 대체한다. -->
+<mapper namespace="GiveMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="give" type="anisup.model.Give">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="supno" column="supno" />
+		<result property="giveno" column="giveno" />
+		<result property="giveprice" column="giveprice" />
+		<result property="giveselect" column="giveselect" />
+		<result property="giveacname" column="giveacname" />
+		<result property="giveacc" column="giveacc" />
+		<result property="givedate" column="givedate" />
+		<result property="giveid" column="giveid" />
+	</resultMap>
+
+	<!-- 데이터 저장을 위한 기능 정의 <insert id="메서드이름" parameterType="파라미터의 데이터 타입" useGeneratedKeys="자동증가 
+		일련번호값 리턴 여부" keyProperty="자동증가 일련번호 컬럼명"> -->
+	<insert id="addGive" parameterType="anisup.model.Give"
+		useGeneratedKeys="true" keyProperty="giveno">
+		<!-- "#{변수명}" 으로 표시된 곳에 Beans의 멤버변수가 치환된다. -->
+		INSERT INTO give (supno, giveprice, giveacname, givebank, giveacc, givedate, giveid)
+		VALUES (#{supno}, #{giveprice}, #{giveacname}, #{givebank}, #{giveacc}, now(), #{giveid});
+	</insert>
+	
+	<!-- 단일행 조회를 위한 기능 정의 <select id="메서드이름" parameterType="파라미터의 데이터 타입" resultMap="리턴될 Beans이름"> -->
+	<select id="selectGiveItem" parameterType="anisup.model.Give"
+		resultMap="give">
+		<!-- "#{변수명}" 으로 표시된 곳에 파라미터가 치환된다. -->
+		SELECT
+		supno,giveno,giveprice,giveselect,giveacname,giveacc,givedate,giveid, givebank
+		FROM give WHERE giveno=#{giveno};
+	</select>
+
+	<!-- 데이터 삭제를 위한 기능 정의 <delete id="메서드이름" parameterType="파라미터의 데이터 타입"> -->
+	<delete id="removeGive" parameterType="anisup.model.Give">
+		<!-- "#{변수명}" 으로 표시된 곳에 파라미터가 치환된다. -->
+		DELETE FROM give WHERE giveno=#{giveno};
+	</delete>
+
+	<!-- 데이터 갱신을 위한 기능 정의 <update id="메서드이름" parameterType="파라미터의 데이터 타입"> -->
+	<update id="editGive" parameterType="anisup.model.Give">
+		<!-- "#{변수명}" 으로 표시된 곳에 Beans의 멤버변수가 치환된다. -->
+		UPDATE give SET supno=#{supno}, giveprice=#{giveprice} ,
+		giveselect=#{giveselect} , giveacname=#{giveacname} ,
+		giveacc=#{giveacc},
+		givedate=#{givedate} , giveid=#{giveid}
+		WHERE giveno=#{giveno};
+	</update>	
+
+	<!-- 다중행 조회를 위한 기능 정의 <select id="메서드이름" resultMap="리턴될 Beans이름"> -->
+	<select id="selectGiveList" resultMap="give">
+		<!-- 이 안에서 처리할 SQL문을 명시한다. -->
+		SELECT
+		supno,giveno,giveprice,giveselect,giveacname,giveacc,givedate,giveid
+		FROM give;
+	</select>
+</mapper>

@@ -1,0 +1,279 @@
+@font-face {
+	font-family: nanumGothic;
+	src: url(assets/fonts/NanumGothic.eot);
+	src: local(※), url(assets/fonts/NanumGothic.eot) format(‘woff’)
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	font-family: nanumGothic !important;
+}
+
+.container {
+	position: relative;
+}
+/*로고 이미지 시작*/
+#logo>a>img {
+	width: 323px;
+	height: 120px;
+	position: relative;
+	top: 68px;
+	z-index: 1000;
+}
+/*내용 최소 크기*/
+section {
+	min-height: 600px;
+}
+/*로고 이미지 끝*/
+/*캐러셀 사이드 바*/
+.carousel-control.right {
+	left: auto;
+	right: 0;
+	background-image: none;
+}
+
+.carousel-control.left {
+	right: auto;
+	left: 0;
+	background-image: none;
+}
+/*메뉴바 시작*/
+
+/*네비바*/
+.navbar {
+	position: relative;
+	min-height: 50px;
+	margin-bottom: 20px;
+	border: none;
+	background-color: rgb(5, 103, 192);
+}
+/*배경*/
+/*#gnb{
+	background-color: rgb(102, 154, 204);
+}*/
+/*드롭다운 메뉴*/
+.dropdown-menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+	display: none;
+	float: left;
+	/*min-width: 160px;*/
+	padding: 5px 0;
+	margin: 2px 0 0;
+	font-size: 14px;
+	list-style: none;
+	background-color: rgb(102, 154, 204);
+	background-clip: padding-box;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0, 0, 0, .15);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+	color: #fff;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+	.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+	color: #fff;
+	background-color: rgb(51, 103, 153);
+}
+
+/*hover사용시 색 유지*/
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover,
+	.navbar-default .navbar-nav>.open>a:focus {
+	color: #555;
+	background-color: #a1daf7;
+}
+
+.navbar-default .navbar-nav>.open#login>a, .navbar-default .navbar-nav>.open#login>a:hover,
+	.navbar-default .navbar-nav>.open#login>a:focus {
+	background-color: inherit !important;
+}
+
+.navbar-collapse>ul.nav>li.dropdown>a:focus {
+	background-color: rgb(51, 103, 153);
+}
+
+ul.nav>li.dropdown>a {
+	line-height: 1.4;
+	background-color: rgb(5, 103, 192);
+}
+
+ul.nav>li.dropdown>ul.dropdown-menu {
+	width: 100%;
+}
+
+ul.nav>li.dropdown>a:hover {
+	background-color: rgb(51, 103, 153);
+}
+
+#gnb>ul.nav>li.dropdown>a {
+	font-size: 20px;
+	color: #fff;
+}
+/*반응형 메뉴 로고 */
+.navbar-header {
+	background-color: rgb(5, 103, 192);
+}
+
+/*navbar media 쿼리 시작*/
+@media ( max-width : 767px) {
+	#space {
+		display: none;
+	}
+	ul.nav>li.dropdown>a {
+		position: relative;
+		display: block;
+		padding: 15px 70px;
+	}
+	#she-name{
+		padding:15px 45px;
+	}
+	#logo {
+		position: relative;
+		display: block;
+	}
+	#logotxt {
+		width: 200px;
+		color: #fff;
+	}
+	#top-menu {
+		text-shadow: 0px 2px 2px #54f6f4;
+	}
+	footer>address {
+		font-size: 0.8em;
+	}
+}
+
+@media ( min-width : 768px) and (max-width: 991px) {
+	ul.nav>li.dropdown>a {
+		position: relative;
+		display: block;
+		padding: 15px 20px;
+	}
+	#logo {
+		position: relative;
+		display: block;
+	}
+	#logotxt {
+		width: 323px;
+		color: #fff;
+	}
+	#top-menu {
+		text-shadow: 2px 2px 2px #ccc;
+	}
+}
+
+@media ( min-width : 992px) {
+	#logotxt {
+		border-right: 1px solid #a1daf7;
+	}
+	ul.nav>li.dropdown:first-child>a {
+		border-right: 1px solid #a1daf7;
+	}
+	ul.nav>li.dropdown:nth-child(2)>a {
+		border-right: 1px solid #a1daf7;
+	}
+	ul.nav>li.dropdown:nth-child(3)>a {
+		border-right: 1px solid #a1daf7;
+	}
+}
+
+@media ( min-width : 992px) and (max-width: 1199px) {
+	ul.nav>li.dropdown>a {
+		position: relative;
+		display: block;
+		padding: 15px 40px;
+	}
+	ul.nav>li.dropdown>a:list-child {
+		position: relative;
+		display: block;
+		padding: 15px 40px;
+	}
+	#logo {
+		position: relative;
+		display: block;
+	}
+	#logotxt {
+		width: 323px;
+		color: #fff;
+	}
+	#top-menu {
+		text-shadow: 2px 2px 2px #ccc;
+	}
+}
+
+@media ( min-width : 1200px) {
+	ul.nav>li.dropdown>a {
+		position: relative;
+		display: block;
+		padding: 15px 70px;
+	}
+	#she-login {
+		position: relative;
+		display: block;
+		padding: 15px 45px;
+	}
+	#logo {
+		position: relative;
+		display: block;
+	}
+	#logotxt {
+		width: 323px;
+		color: #fff;
+	}
+	#top-menu {
+		text-shadow: 2px 2px 2px #ccc;
+	}
+}
+/*navbar media 쿼리 끝*/
+
+/*메뉴바 끝*/
+/*footer 이미지*/
+footer>div>img {
+	width: 100%;
+	margin-bottom: -1px;
+}
+
+footer>address {
+	text-align: center;
+	background-color: rgba(5, 103, 192, 0.8);
+	color: #fff;
+	width: 100%;
+	height: 100px;
+	margin-bottom: 0;
+}
+
+footer>address>a {
+	color: #EDA900;
+}
+
+/*공통 게시판*/
+h2 {
+	letter-spacing: 0.5em;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+small {
+	margin-left: 10px;
+}
+
+th {
+	letter-spacing: 0.5em;
+}
+
+hr {
+	border: 1.5px solid rgb(190, 190, 190);
+}
